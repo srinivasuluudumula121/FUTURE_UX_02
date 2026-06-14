@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "surface-tint": "#5f5e5e",
+                    "surface-container-low": "#f4f3f3",
+                    "on-secondary-fixed-variant": "#464747",
+                    "inverse-primary": "#c8c6c6",
+                    "tertiary-fixed": "#e7e1de",
+                    "on-background": "#1a1c1c",
+                    "on-surface-variant": "#6D6D6D",
+                    "on-surface": "#1a1c1c",
+                    "on-tertiary-container": "#9f9b98",
+                    "surface-dim": "#dadada",
+                    "on-primary-fixed-variant": "#474747",
+                    "on-primary-container": "#9c9b9b",
+                    "on-error-container": "#93000a",
+                    "on-tertiary": "#ffffff",
+                    "on-secondary": "#ffffff",
+                    "background": "#F3EEE8",
+                    "tertiary": "#201e1c",
+                    "tertiary-fixed-dim": "#cac6c2",
+                    "surface-container": "#eeeeee",
+                    "on-secondary-container": "#626262",
+                    "surface-container-lowest": "#ffffff",
+                    "primary": "#1e1e1e",
+                    "outline": "#747878",
+                    "secondary-fixed-dim": "#c7c6c6",
+                    "surface-container-high": "#e8e8e8",
+                    "secondary-container": "#e1dfdf",
+                    "on-primary-fixed": "#1b1c1c",
+                    "on-error": "#ffffff",
+                    "surface-container-highest": "#e2e2e2",
+                    "surface-variant": "#e2e2e2",
+                    "secondary": "#5e5e5e",
+                    "primary-fixed-dim": "#c8c6c6",
+                    "primary-fixed": "#e4e2e1",
+                    "inverse-on-surface": "#f1f1f1",
+                    "on-primary": "#ffffff",
+                    "primary-container": "#E89A3D",
+                    "tertiary-container": "#353331",
+                    "outline-variant": "#E2D9D0",
+                    "inverse-surface": "#2f3131",
+                    "on-tertiary-fixed": "#1d1b1a",
+                    "on-secondary-fixed": "#1b1c1c",
+                    "on-tertiary-fixed-variant": "#494644",
+                    "surface-bright": "#f9f9f9",
+                    "surface": "#F3EEE8",
+                    "secondary-fixed": "#e4e2e2",
+                    "error": "#ba1a1a"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "2xl": "20px",
+                    "brand": "16px",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "stack-sm": "8px",
+                    "gutter": "24px",
+                    "margin-desktop": "64px",
+                    "unit": "8px",
+                    "stack-xs": "4px",
+                    "margin-mobile": "24px",
+                    "stack-md": "16px",
+                    "stack-xl": "64px",
+                    "stack-lg": "32px"
+            },
+            "fontFamily": {
+                    "sans": ["Manrope", "sans-serif"],
+                    "body-sm": ["Manrope"],
+                    "headline-xl": ["Manrope"],
+                    "label-md": ["Manrope"],
+                    "headline-xl-mobile": ["Manrope"],
+                    "body-md": ["Manrope"],
+                    "headline-md": ["Manrope"],
+                    "headline-lg": ["Manrope"],
+                    "headline-lg-mobile": ["Manrope"],
+                    "body-lg": ["Manrope"]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        body { font-family: 'Manrope', sans-serif; background-color: #F3EEE8; }
+        .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
+        .custom-checkbox:checked + div .checkbox-inner {
+            background-color: #E89A3D;
+            border-color: #E89A3D;
+        }
+        .custom-checkbox:checked + div .checkbox-inner::after {
+            content: 'check';
+            font-family: 'Material Symbols Outlined';
+            font-size: 14px;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .custom-checkbox:checked + div {
+            border-color: #E89A3D;
+            box-shadow: 0 2px 8px rgba(232, 154, 61, 0.1);
+        }
+    </style>
+</head>
+<body class="bg-surface text-on-surface antialiased flex justify-center">
+<!-- Mobile Container (390x844px simulator) -->
+<main class="w-[390px] h-[844px] bg-surface relative flex flex-col shadow-2xl overflow-hidden">
+<!-- TopAppBar -->
+<header class="h-[64px] w-full flex items-center justify-between px-margin-mobile bg-surface">
+<div class="flex items-center gap-4">
+<div class="w-10 h-10 rounded-full flex items-center justify-center cursor-pointer bg-white shadow-sm border border-outline-variant hover:bg-surface-container-low transition-colors duration-200">
+<span class="material-symbols-outlined text-[20px]" data-icon="arrow_back">arrow_back</span>
+</div>
+<h1 class="font-medium text-[16px] text-primary">Choose Service</h1>
+</div>
+<div class="w-10 h-10 rounded-full border border-outline-variant flex items-center justify-center bg-white shadow-sm">
+<span class="material-symbols-outlined text-[22px] text-primary" data-icon="person">person</span>
+</div>
+</header>
+<!-- Content Canvas -->
+<div class="flex-1 overflow-y-auto px-margin-mobile pt-8 pb-[200px] flex flex-col gap-[32px]">
+<!-- Greeting/Instruction Section -->
+<section>
+<h2 class="text-[28px] font-semibold text-primary leading-tight mb-2">Select Services</h2>
+<p class="text-[14px] font-normal text-on-surface-variant">Choose the grooming services you'd like to book for today.</p>
+</section>
+<!-- Service List -->
+<div class="flex flex-col gap-4">
+<!-- Service Card: Haircut -->
+<label class="block cursor-pointer">
+<input class="hidden peer custom-checkbox" onchange="toggleContinueButton()" type="checkbox"/>
+<div class="bg-white p-6 rounded-brand border border-transparent shadow-sm hover:shadow-md transition-all duration-200 flex items-start gap-4">
+<div class="w-14 h-14 rounded-xl bg-surface-container-high shrink-0 flex items-center justify-center overflow-hidden">
+<img alt="Haircut" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDTN48UeDxA20JE4qFodPzFPzK5DrZhwvIFMx8LXsrSIyplZ_cV2LQs2UKDWG0xfQLrqVpf4pnsQYYCl1PkOgwfo8ckB2uOCdaH_qFonlVILseJsJncfa1ShmOaPng7QMPKCc-oQrgMRmN11fD2COXaCINRARt0iYJ0YQoCLYHC8HF8Mn-oY8XY-2YLXBZQKSbcYIcVHJrpIkrxItZ6y10MUEClZ023oyNGZMHwL8qXITQIxKOMKn1eIpTE76KAT-g3fL9tatHouY0W"/>
+</div>
+<div class="flex-1">
+<div class="flex justify-between items-start mb-1">
+<h3 class="text-[16px] font-medium text-primary">Haircut</h3>
+<div class="checkbox-inner w-6 h-6 border-2 border-outline-variant rounded-md transition-colors"></div>
+</div>
+<p class="text-[14px] font-normal text-on-surface-variant mb-3 leading-snug">Professional classic or trendy haircut for any style.</p>
+<div class="flex items-center gap-2">
+<span class="px-2 py-1 bg-surface-container-low rounded-md text-[12px] font-semibold text-secondary">30 min</span>
+<span class="text-[14px] font-medium text-primary">₹299</span>
+</div>
+</div>
+</div>
+</label>
+<!-- Service Card: Beard Styling -->
+<label class="block cursor-pointer">
+<input class="hidden peer custom-checkbox" onchange="toggleContinueButton()" type="checkbox"/>
+<div class="bg-white p-6 rounded-brand border border-transparent shadow-sm hover:shadow-md transition-all duration-200 flex items-start gap-4">
+<div class="w-14 h-14 rounded-xl bg-surface-container-high shrink-0 flex items-center justify-center overflow-hidden">
+<img alt="Beard" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBZcHGVAN_JupiH8tEWszu_qtv6YD8_4nM0vQSvrHQcj-Lay1zOEt28EH5xGOH0b30pbMPuZauiJyWwINhH071df9zAEIp1IXd4xB3TtAQXeewS9viL4qT-VtS6Go48g_YQ6393xpeco9iOREXT1IkWfMvyJS-u0kAknNlVPYeqLRW3yHngBLsFtXU48coDalSktlXHOuZuEtwzQoTvpXdBXAwd6iwMNSbNV-j2jEuHzfIoIVHixS2MlMqSQYp4_uk-O9XfWpxiKem8"/>
+</div>
+<div class="flex-1">
+<div class="flex justify-between items-start mb-1">
+<h3 class="text-[16px] font-medium text-primary">Beard Styling</h3>
+<div class="checkbox-inner w-6 h-6 border-2 border-outline-variant rounded-md transition-colors"></div>
+</div>
+<p class="text-[14px] font-normal text-on-surface-variant mb-3 leading-snug">Trim and style your beard to perfection with hot towel.</p>
+<div class="flex items-center gap-2">
+<span class="px-2 py-1 bg-surface-container-low rounded-md text-[12px] font-semibold text-secondary">20 min</span>
+<span class="text-[14px] font-medium text-primary">₹199</span>
+</div>
+</div>
+</div>
+</label>
+<!-- Service Card: Facial -->
+<label class="block cursor-pointer">
+<input class="hidden peer custom-checkbox" onchange="toggleContinueButton()" type="checkbox"/>
+<div class="bg-white p-6 rounded-brand border border-transparent shadow-sm hover:shadow-md transition-all duration-200 flex items-start gap-4">
+<div class="w-14 h-14 rounded-xl bg-surface-container-high shrink-0 flex items-center justify-center overflow-hidden">
+<img alt="Facial" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAlCYfAJE3vk3G0_KoHZZ6ovmWCuZFcLWmmUwzzBiTiIlTtIn2431t8QE9D8fF3X4vr7eqoMw9MIvrz9Wae4Sysvxq5jV1DAPyeCPtNKu8JvNdvqcwj6neYf5bSl46se4fYzlAACFPlQhSD_BCxtMVlWTkwE3_BK8p3ozkF4o9K9xm5PiCoTwt2dmQR5zuNlg7hmpM8s1vYcVUPk5IfB3kqjabQ9LI3iCh6cKz-OmUjlLtw0SaSloMxyJg8Pqz68om-QZfi4aSyqIlP"/>
+</div>
+<div class="flex-1">
+<div class="flex justify-between items-start mb-1">
+<h3 class="text-[16px] font-medium text-primary">Facial</h3>
+<div class="checkbox-inner w-6 h-6 border-2 border-outline-variant rounded-md transition-colors"></div>
+</div>
+<p class="text-[14px] font-normal text-on-surface-variant mb-3 leading-snug">Refreshing skin treatment and face massage.</p>
+<div class="flex items-center gap-2">
+<span class="px-2 py-1 bg-surface-container-low rounded-md text-[12px] font-semibold text-secondary">45 min</span>
+<span class="text-[14px] font-medium text-primary">₹599</span>
+</div>
+</div>
+</div>
+</label>
+<!-- Service Card: Hair Spa -->
+<label class="block cursor-pointer">
+<input class="hidden peer custom-checkbox" onchange="toggleContinueButton()" type="checkbox"/>
+<div class="bg-white p-6 rounded-brand border border-transparent shadow-sm hover:shadow-md transition-all duration-200 flex items-start gap-4">
+<div class="w-14 h-14 rounded-xl bg-surface-container-high shrink-0 flex items-center justify-center overflow-hidden">
+<img alt="Hair Spa" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB4hb17VbTJmk4mDeyiZA8LU6EQjsMQx_Xkny8HY3HEVIsuTkCwAByrCwX_nLO5U5X7cjuxxgQUaUnkD2jgS7ji20nuS_1HtNxWrpNB0PUkYB1Bf7ePOtMCv3JLgzMHfBH7_60B0BVHiPhu7gOeuM1j7Dt_OVZti1z-Et2TPmQxA_uQI4UVkqJn5-OCo5YAS5XLWzj9mqH4gWxbVROqeckTfNChwDCbej-kFEecbhdxaPL8p1Vy8fRER6w-Q4C_ZsF1mpAvWIdS09YX"/>
+</div>
+<div class="flex-1">
+<div class="flex justify-between items-start mb-1">
+<h3 class="text-[16px] font-medium text-primary">Hair Spa</h3>
+<div class="checkbox-inner w-6 h-6 border-2 border-outline-variant rounded-md transition-colors"></div>
+</div>
+<p class="text-[14px] font-normal text-on-surface-variant mb-3 leading-snug">Deep conditioning and head massage for hair health.</p>
+<div class="flex items-center gap-2">
+<span class="px-2 py-1 bg-surface-container-low rounded-md text-[12px] font-semibold text-secondary">40 min</span>
+<span class="text-[14px] font-medium text-primary">₹899</span>
+</div>
+</div>
+</div>
+</label>
+</div>
+</div>
+<!-- Sticky Bottom Summary and CTA -->
+<div class="absolute left-0 w-full bg-white/90 backdrop-blur-md border-t border-outline-variant p-margin-mobile space-y-4 bottom-[84px] shadow-[0_-10px_20px_rgba(0,0,0,0.03)]">
+<div class="text-center text-[14px] font-normal text-on-surface-variant" id="summary-text">
+            Select at least one service to continue
+        </div>
+<button class="w-full h-[56px] rounded-full bg-surface-container-high text-on-surface-variant font-medium text-[14px] flex items-center justify-center transition-all duration-300" disabled="" id="continue-btn">
+            Continue
+        </button>
+</div>
+<!-- BottomNavBar -->
+<nav class="absolute bottom-0 left-0 w-full h-[84px] bg-white border-t border-outline-variant flex items-center justify-around px-margin-mobile pb-5">
+<div class="flex flex-col items-center gap-1 cursor-pointer">
+<span class="material-symbols-outlined text-[26px] text-primary-container" style="font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24;">home</span>
+<span class="text-[14px] font-medium text-primary-container">Home</span>
+</div>
+<div class="flex flex-col items-center gap-1 cursor-pointer group">
+<span class="material-symbols-outlined text-[26px] text-on-surface-variant group-hover:text-primary transition-colors">calendar_month</span>
+<span class="text-[14px] font-medium text-on-surface-variant group-hover:text-primary transition-colors">Bookings</span>
+</div>
+<div class="flex flex-col items-center gap-1 cursor-pointer group">
+<span class="material-symbols-outlined text-[26px] text-on-surface-variant group-hover:text-primary transition-colors">account_circle</span>
+<span class="text-[14px] font-medium text-on-surface-variant group-hover:text-primary transition-colors">Profile</span>
+</div>
+</nav>
+</main>
+<script>
+    function toggleContinueButton() {
+        const checkboxes = document.querySelectorAll('input[type="checkbox"]');
+        const continueBtn = document.getElementById('continue-btn');
+        const summaryText = document.getElementById('summary-text');
+        const checkedCount = Array.from(checkboxes).filter(c => c.checked).length;
+
+        if (checkedCount > 0) {
+            continueBtn.disabled = false;
+            continueBtn.classList.remove('bg-surface-container-high', 'text-on-surface-variant');
+            continueBtn.classList.add('bg-primary-container', 'text-white', 'shadow-lg', 'shadow-primary-container/20');
+            summaryText.innerHTML = `<span class="font-medium text-primary">${checkedCount} service${checkedCount > 1 ? 's' : ''} selected</span>`;
+        } else {
+            continueBtn.disabled = true;
+            continueBtn.classList.add('bg-surface-container-high', 'text-on-surface-variant');
+            continueBtn.classList.remove('bg-primary-container', 'text-white', 'shadow-lg', 'shadow-primary-container/20');
+            summaryText.innerHTML = 'Select at least one service to continue';
+        }
+    }
+</script>
+</body></html>

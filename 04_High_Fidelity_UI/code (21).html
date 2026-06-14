@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f9f9f9;
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "primary": "#1e1e1e",
+                        "on-primary": "#ffffff",
+                        "secondary": "#5e5e5e",
+                        "background": "#f9f9f9",
+                        "surface": "#f9f9f9",
+                        "on-surface": "#1a1c1c",
+                        "on-surface-variant": "#444748",
+                        "outline-variant": "#c4c7c7",
+                        "surface-container-low": "#f4f3f3",
+                        "surface-container": "#eeeeee",
+                        "surface-container-high": "#e8e8e8",
+                        "brand-accent": "#E89A3D" // Brand Orange preserved for interactive elements like check/CTA if applicable, but primary is #1e1e1e
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "2xl": "16px", // Updated to 16px per request
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "stack-xs": "4px",
+                        "stack-sm": "8px",
+                        "stack-md": "16px",
+                        "stack-lg": "32px",
+                        "stack-xl": "64px",
+                        "gutter": "24px",
+                        "margin-mobile": "24px", // Updated to 24px per request
+                        "unit": "8px"
+                    }
+                },
+            },
+        }
+    </script>
+</head>
+<body class="bg-background text-on-surface flex justify-center items-start min-h-screen">
+<!-- Mobile Container (390x844 simulated) -->
+<main class="w-[390px] h-full min-h-[844px] bg-background relative flex flex-col overflow-hidden shadow-2xl">
+<!-- Header -->
+<header class="h-[64px] w-full flex items-center px-margin-mobile bg-background sticky top-0 z-10">
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-on-surface cursor-pointer p-2 -ml-2">arrow_back</span>
+<h1 class="text-[20px] font-semibold text-on-surface">Haircut Selected</h1>
+</div>
+</header>
+<!-- Content Area -->
+<div class="flex-1 px-margin-mobile pt-4 pb-stack-xl">
+<!-- Greeting/Instruction -->
+<section class="mb-stack-lg">
+<h2 class="text-[28px] font-bold text-on-surface leading-tight">Haircut Selected</h2>
+<p class="text-[14px] text-on-surface-variant mt-1">You can continue or add more services</p>
+</section>
+<!-- Service List -->
+<section class="space-y-4">
+<!-- Card 1: Haircut (Selected) -->
+<div class="flex items-center justify-between p-4 bg-white rounded-2xl shadow-[0_2px_8px_rgba(0,0,0,0.04)] border border-outline-variant/30">
+<div class="flex items-center gap-4">
+<div class="w-14 h-14 bg-surface-container-low rounded-xl flex items-center justify-center overflow-hidden">
+<img alt="Haircut" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBKVD3wYmvwBrljpMWutgcyagctD22XVzHUxyH6CN7wBthoVzYNAjasT48-aH9gZ5PQtxqPHJ0ezU8VhZy3g1rFKhShYWEuN1BfQUxQHlLHH6wu9CdedvMWssoqHy60RzWMkwYDUbEytRLhSRju3F8RjbipgxKfBlvnuB5PDGUT5fPq-tp3webOjcK1sAFFkgKs2ey80GB4aTTBnLqabtpuNzIY10dulBMg9EqoNInoAH1pWNbTstBx24tL0g416HsQA5VviRcv5nWG"/>
+</div>
+<div>
+<p class="text-[16px] font-bold text-on-surface">Haircut</p>
+<p class="text-[13px] text-on-surface-variant">30 min • ₹299</p>
+</div>
+</div>
+<!-- Checkbox (Selected) -->
+<div class="w-6 h-6 bg-brand-accent flex items-center justify-center rounded-md">
+<span class="material-symbols-outlined text-white text-[18px]" style="font-variation-settings: 'wght' 700;">check</span>
+</div>
+</div>
+<!-- Card 2: Beard Trim -->
+<div class="flex items-center justify-between p-4 bg-white rounded-2xl border border-transparent">
+<div class="flex items-center gap-4">
+<div class="w-14 h-14 bg-surface-container-low rounded-xl flex items-center justify-center overflow-hidden">
+<img alt="Beard Trim" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBHoDbCIgAVpH0AY4z_xi2hMemdS47k9bhuiMdoowp8GjlNYdyJzznhQTfnnbmkXI_hPcu0r7J_skozEB-J-XZcPdZjMAppze3mz9MTcBMDXA9OQf2jBVStl7pmI_yEy_SB36MfE3ZAsmMCOhJNbC3zQuwXDvq3AIB83ThxPEIs3JTC7f-O_oi3HvEInvpPHQaDW8MAnOaW24gkZWtUwcBWJLpJDS233otOgxtpautAUdnei5VFtoqID8t_6hVep75dOGZ_JqvP-xio"/>
+</div>
+<div>
+<p class="text-[16px] font-semibold text-on-surface">Beard Trim</p>
+<p class="text-[13px] text-on-surface-variant">20 min • ₹149</p>
+</div>
+</div>
+<!-- Checkbox (Unselected) -->
+<div class="w-6 h-6 border-2 border-outline-variant rounded-md"></div>
+</div>
+<!-- Card 3: Hair Color -->
+<div class="flex items-center justify-between p-4 bg-white rounded-2xl border border-transparent">
+<div class="flex items-center gap-4">
+<div class="w-14 h-14 bg-surface-container-low rounded-xl flex items-center justify-center overflow-hidden">
+<img alt="Hair Color" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD7CD3O7ntyVRfL0UGsGf0xuwrX1BUKXvHewxOiX7cCpm-6FaCWzLowkXHo7uI4EuLZm_dTRtOsOge0oMvm1jMzJgD4N-Uog-rvaLu7t-3rQ9VtRJmULlm9mpCmzlATogpzWBE7oiZyjyVUz_SU6dpGIrQfkO_fTcDwnxADofz1YrQvMfThsETCslBkog_Lk455-8g7EAFaXrNfY12x9KHrWHj3ghl8MeNUOsp0yrFW-3V9RW9HWtSSQ8U4ne9MScu_hrySPI4IqG-M"/>
+</div>
+<div>
+<p class="text-[16px] font-semibold text-on-surface">Hair Color</p>
+<p class="text-[13px] text-on-surface-variant">60 min • ₹899</p>
+</div>
+</div>
+<!-- Checkbox (Unselected) -->
+<div class="w-6 h-6 border-2 border-outline-variant rounded-md"></div>
+</div>
+<!-- Card 4: Head Massage -->
+<div class="flex items-center justify-between p-4 bg-white rounded-2xl border border-transparent">
+<div class="flex items-center gap-4">
+<div class="w-14 h-14 bg-surface-container-low rounded-xl flex items-center justify-center overflow-hidden">
+<img alt="Head Massage" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDjTnJlvQAyHhcfTGKUIVLtvZklPsFIh1U5TpzyiIHjLoEi7lNwj6P-KxFV7RX9zioROk4cIGTTIKXX2Y8gzZeSi-cdqYKClZmCeNesFFpwtp-DOs_r0TpCvA8dVyBLa8XDRATT7QpMgV7FLknyL97ZZ__0s88hQU_EJVJ0nWd_GvUujGp1-eY__Gwgt_bfp_T5uUNt1Zv5wo2CGFwgFAIoRDmWEv6GaPfW1jy4brpkWON6_fQfpSDFkuJHt0rejcLE6gyMrGaso8uL"/>
+</div>
+<div>
+<p class="text-[16px] font-semibold text-on-surface">Head Massage</p>
+<p class="text-[13px] text-on-surface-variant">15 min • ₹199</p>
+</div>
+</div>
+<!-- Checkbox (Unselected) -->
+<div class="w-6 h-6 border-2 border-outline-variant rounded-md"></div>
+</div>
+</section>
+<!-- Summary Section -->
+<section class="mt-stack-lg pt-6 border-t border-outline-variant/30">
+<h3 class="text-[12px] font-bold text-on-surface-variant uppercase tracking-wider mb-4">Selected Services</h3>
+<div class="flex justify-between items-center bg-surface-container p-4 rounded-2xl border border-outline-variant/10">
+<span class="text-[15px] font-semibold text-on-surface">Haircut</span>
+<span class="text-[15px] font-medium text-on-surface-variant">30 min • ₹299</span>
+</div>
+</section>
+</div>
+<!-- Bottom CTA -->
+<footer class="w-full px-margin-mobile py-4 bg-background border-t border-outline-variant/10">
+<button class="w-full h-[56px] bg-brand-accent text-white rounded-2xl text-[16px] font-bold shadow-lg shadow-brand-accent/20 transition-transform active:scale-[0.98]">
+                Continue
+            </button>
+</footer>
+<!-- Bottom Navigation -->
+<nav class="sticky bottom-0 w-full h-[84px] bg-white border-t border-outline-variant flex items-center justify-around pb-6">
+<a class="flex flex-col items-center gap-1 text-brand-accent" href="#">
+<span class="material-symbols-outlined text-[26px]" style="font-variation-settings: 'FILL' 1;">home</span>
+<span class="text-[11px] font-bold">Home</span>
+</a>
+<a class="flex flex-col items-center gap-1 text-on-surface-variant" href="#">
+<span class="material-symbols-outlined text-[26px]">event_note</span>
+<span class="text-[11px] font-medium">Appointments</span>
+</a>
+<a class="flex flex-col items-center gap-1 text-on-surface-variant" href="#">
+<span class="material-symbols-outlined text-[26px]">person</span>
+<span class="text-[11px] font-medium">Profile</span>
+</a>
+</nav>
+</main>
+</body></html>

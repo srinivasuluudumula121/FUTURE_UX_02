@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Review Booking - Step 5 of 5</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "primary": "#E89A3D",
+                        "on-primary": "#ffffff",
+                        "background": "#F3EEE8",
+                        "surface": "#ffffff",
+                        "on-surface": "#1a1c1c",
+                        "on-surface-variant": "#444748",
+                        "outline": "#747878",
+                        "outline-variant": "#c4c7c7",
+                        "surface-container-low": "#ffffff",
+                        "surface-container": "#eeeeee",
+                        "surface-container-highest": "#e2e2e2",
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "12px",
+                        "xl": "16px",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "stack-xs": "4px",
+                        "stack-sm": "8px",
+                        "margin-mobile": "24px",
+                        "stack-md": "16px",
+                        "stack-lg": "32px",
+                        "gutter": "24px",
+                        "margin-desktop": "64px",
+                        "stack-xl": "64px",
+                        "unit": "8px"
+                    },
+                    "fontFamily": {
+                        "sans": ["Manrope", "sans-serif"],
+                        "body-sm": ["Manrope"],
+                        "label-md": ["Manrope"],
+                        "headline-xl": ["Manrope"],
+                        "headline-lg-mobile": ["Manrope"],
+                        "headline-xl-mobile": ["Manrope"],
+                        "body-md": ["Manrope"],
+                        "body-lg": ["Manrope"],
+                        "headline-md": ["Manrope"],
+                        "headline-lg": ["Manrope"]
+                    },
+                    "fontSize": {
+                        "body-sm": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                        "label-md": ["12px", {"lineHeight": "16px", "letterSpacing": "0.02em", "fontWeight": "600"}],
+                        "headline-xl": ["40px", {"lineHeight": "48px", "fontWeight": "700"}],
+                        "headline-lg-mobile": ["24px", {"lineHeight": "32px", "fontWeight": "700"}],
+                        "headline-xl-mobile": ["32px", {"lineHeight": "40px", "fontWeight": "700"}],
+                        "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "500"}],
+                        "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "600"}],
+                        "headline-md": ["20px", {"lineHeight": "28px", "fontWeight": "700"}],
+                        "headline-lg": ["32px", {"lineHeight": "40px", "fontWeight": "700"}]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        body {
+            background-color: #F3EEE8;
+            font-family: 'Manrope', sans-serif;
+            min-height: 100dvh;
+        }
+    </style>
+</head>
+<body class="text-on-surface">
+<!-- Top App Bar -->
+<header class="w-full top-0 sticky z-50 bg-background/80 backdrop-blur-md border-b border-black/5">
+<div class="flex items-center justify-between px-6 h-16 w-full max-w-[1280px] mx-auto">
+<div class="flex items-center gap-4">
+<button class="flex items-center justify-center w-10 h-10 hover:bg-black/5 rounded-full transition-colors duration-200">
+<span class="material-symbols-outlined text-on-surface" data-icon="arrow_back">arrow_back</span>
+</button>
+<h1 class="font-headline-md text-on-surface">Step 5 of 5</h1>
+</div>
+<div class="w-10"></div>
+</div>
+</header>
+<main class="max-w-md mx-auto px-6 pt-stack-md pb-48">
+<!-- Page Title -->
+<section class="mb-stack-lg">
+<h2 class="text-[28px] font-bold leading-tight text-on-surface">Review Booking</h2>
+<p class="font-body-sm text-on-surface-variant mt-1">Please check the details before confirming.</p>
+</section>
+<!-- Service Summary Card -->
+<div class="bg-surface shadow-sm border border-black/5 rounded-xl p-6 mb-4 relative">
+<div class="flex justify-between items-start mb-4">
+<div class="flex items-center gap-4">
+<div class="w-14 h-14 bg-[#EBD9C6] rounded-lg flex items-center justify-center">
+<span class="material-symbols-outlined text-[#8B5E34]" style="font-size: 28px;">content_cut</span>
+</div>
+<div>
+<h3 class="text-[16px] font-semibold text-on-surface">Haircut + Beard Trim</h3>
+<p class="font-body-sm text-on-surface-variant">with Samir Bhai</p>
+</div>
+</div>
+<button class="text-primary font-bold text-[12px] flex items-center gap-1 uppercase tracking-wider">
+                    EDIT <span class="material-symbols-outlined text-[14px]" data-icon="edit">edit</span>
+</button>
+</div>
+<div class="flex items-center justify-between py-3 border-t border-black/5 mt-2">
+<div class="flex items-center gap-1.5 font-body-sm text-on-surface-variant">
+<span class="material-symbols-outlined text-[18px]" data-icon="schedule">schedule</span>
+                    45 min total
+                </div>
+<div class="text-[16px] font-bold">₹449</div>
+</div>
+</div>
+<!-- Date & Time Card -->
+<div class="bg-surface shadow-sm border border-black/5 rounded-xl p-6 mb-4 flex justify-between items-center">
+<div class="flex items-center gap-4">
+<div class="w-10 h-10 flex items-center justify-center bg-primary/10 text-primary rounded-lg">
+<span class="material-symbols-outlined text-[20px]" data-icon="calendar_today">calendar_today</span>
+</div>
+<div>
+<h3 class="text-[16px] font-semibold text-on-surface">Thursday, Oct 24</h3>
+<p class="font-body-sm text-on-surface-variant">4:00 PM</p>
+</div>
+</div>
+<button class="text-primary font-bold text-[12px] flex items-center gap-1 uppercase tracking-wider">
+                EDIT <span class="material-symbols-outlined text-[14px]" data-icon="edit">edit</span>
+</button>
+</div>
+<!-- Price Summary Section -->
+<section class="bg-surface shadow-sm border border-black/5 rounded-xl p-6 mb-4">
+<div class="flex justify-between items-center mb-6">
+<h3 class="text-[16px] font-semibold text-on-surface">Price Summary</h3>
+<button class="text-primary font-bold text-[12px] flex items-center gap-1 uppercase tracking-wider">
+                    EDIT <span class="material-symbols-outlined text-[14px]" data-icon="edit">edit</span>
+</button>
+</div>
+<div class="space-y-4">
+<div class="flex justify-between items-center">
+<span class="text-[14px] text-on-surface-variant">Haircut</span>
+<span class="text-[14px] font-medium text-on-surface">₹299</span>
+</div>
+<div class="flex justify-between items-center">
+<span class="text-[14px] text-on-surface-variant">Beard Trim</span>
+<span class="text-[14px] font-medium text-on-surface">₹150</span>
+</div>
+<div class="border-t border-black/5 mt-4 pt-4 flex justify-between items-center">
+<span class="text-[16px] font-bold">Total Amount</span>
+<span class="text-[16px] font-bold text-primary">₹449</span>
+</div>
+</div>
+</section>
+<!-- Policy Note -->
+<div class="flex gap-3 p-6 bg-[#EBD9C6]/20 border border-dashed border-[#8B5E34]/30 rounded-xl">
+<span class="material-symbols-outlined text-[#8B5E34] text-[20px]" data-icon="info">info</span>
+<p class="text-[14px] text-on-surface-variant leading-relaxed">Please arrive 10 minutes early for your appointment to ensure a smooth experience.</p>
+</div>
+</main>
+<!-- Sticky CTA Container -->
+<div class="fixed bottom-[84px] left-0 w-full bg-white border-t border-black/5 p-6 z-40">
+<div class="max-w-md mx-auto">
+<button class="w-full h-[56px] bg-primary text-on-primary rounded-xl font-bold text-[18px] shadow-lg shadow-primary/20 transition-all active:scale-[0.98] duration-200" id="confirmBtn">
+                Confirm Booking
+            </button>
+</div>
+</div>
+<!-- Bottom Navigation -->
+<nav class="fixed bottom-0 left-0 right-0 h-[84px] bg-white border-t border-black/5 flex items-center justify-around px-4 z-50 shadow-[0_-4px_12px_rgba(0,0,0,0.05)]">
+<a class="flex flex-col items-center gap-1 text-primary" href="#">
+<span class="material-symbols-outlined text-[26px] fill-[1]">home</span>
+<span class="text-[12px] font-bold">Home</span>
+</a>
+<a class="flex flex-col items-center gap-1 text-on-surface-variant hover:text-primary transition-colors" href="#">
+<span class="material-symbols-outlined text-[26px]">calendar_month</span>
+<span class="text-[12px] font-medium">Appointments</span>
+</a>
+<a class="flex flex-col items-center gap-1 text-on-surface-variant hover:text-primary transition-colors" href="#">
+<span class="material-symbols-outlined text-[26px]">person</span>
+<span class="text-[12px] font-medium">Profile</span>
+</a>
+</nav>
+<script>
+        document.getElementById('confirmBtn').addEventListener('click', function() {
+            const originalContent = this.innerHTML;
+            this.innerHTML = '<span class="flex items-center justify-center gap-2"><svg class="animate-spin h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"><circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle><path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path></svg> Processing...</span>';
+            this.classList.add('opacity-90');
+            this.disabled = true;
+            
+            setTimeout(() => {
+                alert('Booking Confirmed! Your relaxation journey begins on Oct 24.');
+                this.innerHTML = originalContent;
+                this.classList.remove('opacity-90');
+                this.disabled = false;
+            }, 1800);
+        });
+
+        // Touch feedback
+        document.querySelectorAll('button, .bg-surface').forEach(el => {
+            el.addEventListener('touchstart', () => { el.style.opacity = '0.7'; });
+            el.addEventListener('touchend', () => { el.style.opacity = '1'; });
+        });
+    </script>
+</body></html>

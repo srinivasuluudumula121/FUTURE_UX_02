@@ -1,0 +1,286 @@
+<!DOCTYPE html><html class="light" lang="en"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f9f9f9;
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .hide-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .hide-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                "primary": "#1e1e1e",
+                "on-secondary-fixed-variant": "#464747",
+                "on-primary": "#ffffff",
+                "secondary-fixed-dim": "#c7c6c6",
+                "error": "#ba1a1a",
+                "on-primary-fixed-variant": "#474747",
+                "tertiary-fixed": "#e7e1de",
+                "on-surface": "#1a1c1c",
+                "on-background": "#1a1c1c",
+                "on-secondary-container": "#626262",
+                "inverse-surface": "#2f3131",
+                "surface-tint": "#5f5e5e",
+                "on-surface-variant": "#444748",
+                "primary-fixed": "#e4e2e1",
+                "surface-container-high": "#e8e8e8",
+                "secondary-fixed": "#e4e2e2",
+                "on-tertiary-container": "#9f9b98",
+                "surface-dim": "#dadada",
+                "primary-container": "#333333",
+                "tertiary-container": "#353331",
+                "on-primary-fixed": "#1b1c1c",
+                "error-container": "#ffdad6",
+                "surface-container-low": "#f4f3f3",
+                "inverse-primary": "#c8c6c6",
+                "surface-container-highest": "#e2e2e2",
+                "on-tertiary-fixed": "#1d1b1a",
+                "on-error-container": "#93000a",
+                "tertiary": "#201e1c",
+                "on-tertiary-fixed-variant": "#494644",
+                "tertiary-fixed-dim": "#cac6c2",
+                "secondary": "#5e5e5e",
+                "on-secondary-fixed": "#1b1c1c",
+                "surface-container": "#eeeeee",
+                "on-secondary": "#ffffff",
+                "background": "#f9f9f9",
+                "surface-bright": "#f9f9f9",
+                "primary-fixed-dim": "#c8c6c6",
+                "surface-variant": "#e2e2e2",
+                "on-primary-container": "#9c9b9b",
+                "outline-variant": "#c4c7c7",
+                "outline": "#747878",
+                "secondary-container": "#e1dfdf",
+                "on-tertiary": "#ffffff",
+                "surface-container-lowest": "#ffffff",
+                "inverse-on-surface": "#f1f1f1",
+                "surface": "#f9f9f9",
+                "on-error": "#ffffff"
+              },
+              "borderRadius": {
+                "DEFAULT": "0.25rem",
+                "lg": "0.5rem",
+                "xl": "0.75rem",
+                "full": "9999px"
+              },
+              "spacing": {
+                "stack-xs": "4px",
+                "stack-sm": "8px",
+                "stack-xl": "64px",
+                "stack-lg": "32px",
+                "gutter": "24px",
+                "unit": "8px",
+                "stack-md": "16px",
+                "margin-mobile": "24px",
+                "margin-desktop": "64px"
+              }
+            },
+          },
+        }
+    </script>
+</head>
+<body class="bg-surface text-on-surface">
+<!-- Top App Bar -->
+<header class="w-full top-0 sticky bg-surface/80 backdrop-blur-md border-b border-outline-variant z-50 flex items-center justify-between px-margin-mobile h-16">
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-on-surface cursor-pointer p-1 hover:bg-surface-container-highest rounded-full transition-colors" data-icon="arrow_back">arrow_back</span>
+<h1 class="text-[28px] font-bold leading-tight tracking-tight text-on-surface">Reschedule</h1>
+</div>
+</header>
+<main class="max-w-[430px] mx-auto pb-[180px]">
+<!-- Subtitle -->
+<div class="px-margin-mobile py-6">
+<p class="text-body-md text-on-surface-variant">Choose a new time for your booking</p>
+</div>
+<!-- Summary Card -->
+<section class="px-margin-mobile mb-8">
+<div class="bg-surface-container-low shadow-sm border border-outline-variant p-margin-mobile rounded-xl flex items-center justify-between">
+<div>
+<h2 class="text-lg font-bold text-on-surface">Haircut</h2>
+<p class="text-body-sm text-on-surface-variant mt-1">Samir Bhai • 30 min • ₹299</p>
+</div>
+<div class="w-12 h-12 bg-primary rounded-full flex items-center justify-center text-on-primary" style="background-color: rgb(232, 154, 61);">
+<span class="material-symbols-outlined text-[24px]" data-icon="content_cut">content_cut</span>
+</div>
+</div>
+</section>
+<!-- Date Selector -->
+<section class="mb-8">
+<div class="flex items-center justify-between px-margin-mobile mb-4">
+<span class="text-label-md uppercase tracking-widest text-on-surface-variant">Select Date</span>
+<span class="text-body-sm font-bold text-on-surface">October 2023</span>
+</div>
+<div class="flex overflow-x-auto hide-scrollbar gap-3 px-margin-mobile">
+<!-- Selected Date -->
+<div class="flex flex-col items-center justify-center min-w-[64px] h-[84px] rounded-xl transition-all bg-primary shadow-md" style="background-color: rgb(232, 154, 61);">
+<span class="text-[14px] font-medium mb-1 text-on-primary/60">MON</span>
+<span class="text-xl font-bold text-on-primary">23</span>
+</div>
+<!-- Inactive Dates -->
+<div class="flex flex-col items-center justify-center min-w-[64px] h-[84px] border border-outline-variant bg-surface-container-low rounded-xl">
+<span class="text-[14px] font-medium text-on-surface-variant mb-1">TUE</span>
+<span class="text-xl font-bold text-on-surface">24</span>
+</div>
+<div class="flex flex-col items-center justify-center min-w-[64px] h-[84px] border border-outline-variant bg-surface-container-low rounded-xl">
+<span class="text-[14px] font-medium text-on-surface-variant mb-1">WED</span>
+<span class="text-xl font-bold text-on-surface">25</span>
+</div>
+<div class="flex flex-col items-center justify-center min-w-[64px] h-[84px] border border-outline-variant bg-surface-container-low rounded-xl">
+<span class="text-[14px] font-medium text-on-surface-variant mb-1">THU</span>
+<span class="text-xl font-bold text-on-surface">26</span>
+</div>
+<div class="flex flex-col items-center justify-center min-w-[64px] h-[84px] border border-outline-variant bg-surface-container-low rounded-xl">
+<span class="text-[14px] font-medium text-on-surface-variant mb-1">FRI</span>
+<span class="text-xl font-bold text-on-surface">27</span>
+</div>
+</div>
+</section>
+<!-- Conflict Message -->
+<section class="px-margin-mobile mb-8">
+<div class="bg-error-container border border-error/10 p-4 rounded-xl flex items-start gap-4">
+<span class="material-symbols-outlined text-error mt-0.5" data-icon="warning">warning</span>
+<div>
+<h3 class="text-label-md font-bold text-on-error-container uppercase tracking-tight">Reschedule Conflict</h3>
+<p class="text-[14px] font-medium text-on-error-container mt-0.5 leading-normal">Samir Bhai is unavailable at this time.</p>
+</div>
+</div>
+</section>
+<!-- Time Slots Grid -->
+<section class="px-margin-mobile mb-8">
+<h3 class="text-label-md font-bold uppercase tracking-widest text-on-surface-variant mb-4">Morning</h3>
+<div class="grid grid-cols-3 gap-3 mb-4">
+<button class="h-11 bg-surface-container-highest/40 border border-outline-variant/30 rounded-lg text-on-surface-variant/30 font-bold text-sm cursor-not-allowed" disabled="">09:00 AM</button>
+<button class="h-11 bg-surface-container-highest/40 border border-outline-variant/30 rounded-lg text-on-surface-variant/30 font-bold text-sm cursor-not-allowed" disabled="">09:30 AM</button>
+<button class="h-11 bg-surface-container-highest/40 border border-outline-variant/30 rounded-lg text-on-surface-variant/30 font-bold text-sm cursor-not-allowed" disabled="">10:00 AM</button>
+</div>
+<h3 class="text-label-md font-bold uppercase tracking-widest text-on-surface-variant mb-4">Afternoon</h3>
+<div class="grid grid-cols-3 gap-3 mb-4">
+<button class="h-11 bg-primary text-on-primary font-bold rounded-lg text-sm shadow-md ring-2 ring-primary ring-offset-2" style="background-color: rgb(232, 154, 61); --tw-ring-color: #E89A3D;">12:30 PM</button>
+<button class="h-11 bg-surface-container-low border border-outline-variant text-on-surface font-bold rounded-lg text-sm hover:border-primary transition-colors">01:00 PM</button>
+<button class="h-11 bg-surface-container-low border border-outline-variant text-on-surface font-bold rounded-lg text-sm hover:border-primary transition-colors">01:30 PM</button>
+</div>
+<h3 class="text-label-md font-bold uppercase tracking-widest text-on-surface-variant mb-4">Evening</h3>
+<div class="grid grid-cols-3 gap-3">
+<button class="h-11 bg-surface-container-low border border-outline-variant text-on-surface font-bold rounded-lg text-sm hover:border-primary transition-colors">05:00 PM</button>
+<button class="h-11 bg-surface-container-low border border-outline-variant text-on-surface font-bold rounded-lg text-sm hover:border-primary transition-colors">05:30 PM</button>
+<button class="h-11 bg-surface-container-low border border-outline-variant text-on-surface font-bold rounded-lg text-sm hover:border-primary transition-colors">06:00 PM</button>
+</div>
+</section>
+<!-- Recommendations -->
+<section class="px-margin-mobile mb-10">
+<h3 class="text-label-md font-bold uppercase tracking-widest text-on-surface-variant mb-4">Recommendations</h3>
+<div class="space-y-4">
+<!-- Option 1 -->
+<div class="p-margin-mobile border border-outline-variant rounded-xl bg-surface-container-low shadow-sm flex flex-col gap-4">
+<div class="flex justify-between items-start">
+<div>
+<p class="text-[16px] font-bold text-on-surface">Samir Bhai Next Available</p>
+<p class="text-2xl font-bold text-primary mt-1" style="color: rgb(232, 154, 61);">5:00 PM</p>
+</div>
+<div class="p-2 bg-surface-container rounded-full">
+<span class="material-symbols-outlined text-on-surface-variant" data-icon="history">history</span>
+</div>
+</div>
+<button class="w-full h-12 border-2 border-primary text-primary font-bold rounded-lg hover:bg-primary hover:text-on-primary transition-all active:scale-[0.98]" style="border-color: #E89A3D; color: #E89A3D;">Choose This Time</button>
+</div>
+<!-- Option 2 -->
+<div class="p-margin-mobile border border-outline-variant rounded-xl bg-surface-container-low shadow-sm flex flex-col gap-4">
+<div class="flex justify-between items-start">
+<div>
+<p class="text-[16px] font-bold text-on-surface">Arjun Available at 12:30 PM</p>
+<p class="text-2xl font-bold text-on-surface mt-1">Arjun</p>
+</div>
+<div class="w-10 h-10 bg-surface-container rounded-full flex items-center justify-center">
+<span class="material-symbols-outlined text-on-surface-variant" data-icon="person">person</span>
+</div>
+</div>
+<button class="w-full h-12 border-2 border-primary text-primary font-bold rounded-lg hover:bg-primary hover:text-on-primary transition-all active:scale-[0.98]" style="border-color: #E89A3D; color: #E89A3D;">Choose This Barber</button>
+</div>
+</div>
+</section>
+</main>
+<!-- Sticky Bottom CTA Area -->
+<div class="fixed bottom-0 left-0 w-full z-[60]">
+<!-- Action Button Container -->
+<footer class="bg-surface/95 backdrop-blur-sm border-t border-outline-variant px-margin-mobile pt-4 pb-[100px]">
+<div class="max-w-[430px] mx-auto">
+<button class="w-full h-[56px] bg-primary text-on-primary font-bold text-lg rounded-xl flex items-center justify-center gap-3 shadow-lg shadow-primary/20 active:scale-[0.98] transition-all transform" style="background-color: rgb(232, 154, 61);">
+<span class="">Confirm Reschedule</span>
+<span class="material-symbols-outlined" data-icon="check_circle">check_circle</span>
+</button>
+</div>
+</footer>
+<!-- Bottom Nav Bar -->
+<nav class="absolute bottom-0 left-0 w-full bg-white border-t border-outline-variant h-[84px] flex items-center justify-around px-margin-mobile">
+<div class="flex flex-col items-center gap-1 cursor-pointer group">
+<span class="material-symbols-outlined text-[24px] text-on-surface-variant group-hover:text-primary transition-colors" data-icon="home">home</span>
+<span class="text-[11px] font-bold text-on-surface-variant group-hover:text-primary uppercase tracking-tighter">Home</span>
+</div>
+<div class="flex flex-col items-center gap-1 cursor-pointer group">
+<span class="material-symbols-outlined text-[24px] text-on-surface-variant group-hover:text-primary transition-colors" data-icon="calendar_month">calendar_month</span>
+<span class="text-[11px] font-bold text-on-surface-variant group-hover:text-primary uppercase tracking-tighter">Appointments</span>
+</div>
+<div class="flex flex-col items-center gap-1 cursor-pointer group">
+<span class="material-symbols-outlined text-[24px] text-primary" data-icon="person" style="color: rgb(232, 154, 61);">person</span>
+<span class="text-[11px] font-bold text-primary uppercase tracking-tighter" style="color: rgb(232, 154, 61);">Profile</span>
+</div>
+</nav>
+</div>
+<script>
+        // Micro-interactions
+        document.querySelectorAll('button').forEach(button => {
+            if (!button.disabled) {
+                button.addEventListener('touchstart', () => {
+                    button.style.transform = 'scale(0.97)';
+                });
+                button.addEventListener('touchend', () => {
+                    button.style.transform = 'scale(1)';
+                });
+            }
+        });
+
+        // Date selection simulation
+        const dates = document.querySelectorAll('.min-w-\\[64px\\]');
+        dates.forEach(date => {
+            date.addEventListener('click', () => {
+                dates.forEach(d => {
+                    d.classList.remove('bg-primary', 'shadow-md');
+                    d.classList.add('border', 'border-outline-variant', 'bg-surface-container-low');
+                    const spans = d.querySelectorAll('span');
+                    spans[0].classList.remove('text-on-primary/60');
+                    spans[0].classList.add('text-on-surface-variant');
+                    spans[1].classList.remove('text-on-primary');
+                    spans[1].classList.add('text-on-surface');
+                });
+                date.classList.add('bg-primary', 'shadow-md');
+                date.classList.remove('border', 'border-outline-variant', 'bg-surface-container-low');
+                const spans = date.querySelectorAll('span');
+                spans[0].classList.remove('text-on-surface-variant');
+                spans[0].classList.add('text-on-primary/60');
+                spans[1].classList.remove('text-on-surface');
+                spans[1].classList.add('text-on-primary');
+            });
+        });
+    </script>
+
+
+
+
+</body></html>

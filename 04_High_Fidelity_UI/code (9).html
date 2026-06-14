@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&amp;family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        body {
+            font-family: 'Manrope', sans-serif;
+            background-color: #F3EEE8;
+        }
+        .recommendation-card {
+            background-color: #FFFFFF;
+            box-shadow: 0px 6px 20px rgba(0, 0, 0, 0.08); /* Shadow Level 2 from DS */
+            border-radius: 20px; /* From DS Radius System */
+        }
+        .error-alert {
+            background-color: #FDE8E8; /* Soft red background */
+            border: 1px solid #C95B5B;
+            border-radius: 20px;
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "primary": "#E89A3D", /* Primary/CTA from DS */
+                      "primary-dark": "#D6842E",
+                      "background": "#F3EEE8",
+                      "surface": "#FFFFFF",
+                      "text-primary": "#1F1F1F",
+                      "text-secondary": "#6F6F6F",
+                      "text-disabled": "#B3B3B3",
+                      "error-text": "#C95B5B",
+                      "success": "#4EBB65",
+                      "border-color": "#E7DED4"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.25rem",
+                      "lg": "16px",
+                      "xl": "20px",
+                      "full": "9999px"
+              },
+              "spacing": {
+                      "unit": "8px",
+                      "margin-desktop": "64px",
+                      "margin-mobile": "24px",
+                      "stack-md": "16px",
+                      "gutter": "24px",
+                      "stack-xs": "4px",
+                      "stack-lg": "32px",
+                      "stack-xl": "64px",
+                      "stack-sm": "8px"
+              }
+            },
+          },
+        }
+    </script>
+</head>
+<body class="text-text-primary min-h-screen flex flex-col items-center pb-[100px]">
+<!-- Top Navigation -->
+<header class="w-full top-0 sticky z-50 bg-[#F3EEE8]/90 backdrop-blur-md">
+<div class="flex items-center justify-between px-margin-mobile md:px-margin-desktop h-16 w-full max-w-[1280px] mx-auto">
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-text-primary cursor-pointer hover:bg-black/5 p-2 rounded-full transition-colors">arrow_back</span>
+<h1 class="text-[18px] font-bold text-text-primary">Step 5 of 5</h1>
+</div>
+<div class="hidden md:flex gap-8 items-center">
+<span class="text-sm font-semibold text-text-secondary cursor-pointer hover:text-primary transition-colors">Home</span>
+<span class="text-sm font-semibold text-text-secondary cursor-pointer hover:text-primary transition-colors">Services</span>
+<span class="text-sm font-bold text-primary relative after:content-[''] after:absolute after:-bottom-1 after:left-0 after:w-full after:h-0.5 after:bg-primary">Bookings</span>
+<span class="text-sm font-semibold text-text-secondary cursor-pointer hover:text-primary transition-colors">Profile</span>
+</div>
+</div>
+</header>
+<main class="w-full max-w-[600px] px-margin-mobile py-stack-lg flex-grow">
+<!-- Conflict Message Card -->
+<section class="mb-stack-lg">
+<div class="p-6 error-alert">
+<div class="flex items-start gap-4 mb-3">
+<span class="material-symbols-outlined text-error-text mt-0.5" style="font-variation-settings: 'FILL' 1;">error</span>
+<h2 class="text-[20px] font-bold text-error-text leading-tight">Oops! That slot was just booked</h2>
+</div>
+<p class="text-[14px] font-medium text-error-text/90 leading-relaxed pl-10">
+                    Samir Bhai is no longer available at 4:00 PM on Thursday. We found the next best options for you to get your cut without a long wait.
+                </p>
+</div>
+</section>
+<!-- Smart Recommendations Headline -->
+<div class="mb-6 px-1">
+<h3 class="text-[20px] font-bold text-text-primary flex items-center gap-2">
+<span class="material-symbols-outlined text-text-primary" style="font-variation-settings: 'FILL' 1;">auto_awesome</span>
+                Smart Recommendations
+            </h3>
+</div>
+<!-- Recommendations Stack -->
+<div class="flex flex-col gap-6">
+<!-- Option 1: Keep Same Barber -->
+<div class="recommendation-card p-6 flex flex-col gap-6">
+<div class="flex justify-between items-start">
+<div class="flex items-center gap-4">
+<div class="w-16 h-16 rounded-full bg-gray-100 overflow-hidden border border-border-color">
+<img alt="Samir Bhai" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCzTHhNc63gT0hADUkZqJhkKRZS9GYiexcWXVzCyQW4tP9x97uFtRFnARpxq89Ti-S7N6FfTIUrLF0Spi58AsHQk6pEwzNh9YZmc5yUpR0DmjcZpdWikyQ8A65hcWo2ZPvrkeHTVakea82w7b2Fx5iw8svrcGnzsahQ4mI70akz9CQ5ytzrhQ2juR-lIdsrHG4p4bRon8-Yx4RzbDrG3-Rjt4BJgTSaUIvHCcWDOuC5HEryeSAFM0c-pgWZiYSfC2wkw3jZpKOGC8OL"/>
+</div>
+<div>
+<p class="text-[10px] font-bold uppercase tracking-widest text-text-secondary mb-0.5">Keep Same Barber</p>
+<p class="text-[18px] font-bold text-text-primary">Samir Bhai</p>
+</div>
+</div>
+<div class="px-2 py-1 bg-gray-50 rounded-md border border-border-color">
+<p class="text-[10px] font-bold text-text-secondary">NEXT AVAILABLE</p>
+</div>
+</div>
+<div class="flex items-center gap-3 bg-background rounded-xl p-4">
+<span class="material-symbols-outlined text-text-secondary text-[20px]">calendar_today</span>
+<p class="text-[14px] font-bold text-text-primary">Thursday, 5:00 PM</p>
+</div>
+<button class="w-full py-4 bg-primary text-white text-[16px] font-bold rounded-xl shadow-lg shadow-primary/20 hover:bg-primary-dark active:scale-[0.98] transition-all">
+                    Choose This Time
+                </button>
+</div>
+<!-- Option 2: Keep Same Time -->
+<div class="recommendation-card p-6 flex flex-col gap-6">
+<div class="flex justify-between items-start">
+<div class="flex items-center gap-4">
+<div class="w-16 h-16 rounded-full bg-gray-100 overflow-hidden border border-border-color">
+<img alt="Arjun" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC5kGlH8ro8lV2_6UZ84jjEV_8eDQmzfwiQDFRXiB4FDUgL2VRrreWjDqS42Yyhkd-vMmvL8PB8SLRoZcBIRGiYTls7mvGB-TT4J5F9GAq4_7GAK4QtLkACB5YSlUekDkbEVqNf6nOvaUaSEJdgQtq0AuhbvaendHtJM74D8soxPcBwYewOX8BisDwVVih-XoQyWchaR57XUE6hJ19dA-vEoOtt5HplckltXH9EjvqD7zfVHQ4t8v_dz_m6fWzDY2jLUYoG7JedB1KT"/>
+</div>
+<div>
+<p class="text-[10px] font-bold uppercase tracking-widest text-text-secondary mb-0.5">Keep Same Time</p>
+<p class="text-[18px] font-bold text-text-primary">Arjun</p>
+</div>
+</div>
+<div class="px-2 py-1 bg-green-50 rounded-md border border-success/20">
+<p class="text-[10px] font-bold text-success">AVAILABLE NOW</p>
+</div>
+</div>
+<div class="flex items-center gap-3 bg-background rounded-xl p-4">
+<span class="material-symbols-outlined text-text-secondary text-[20px]">schedule</span>
+<p class="text-[14px] font-bold text-text-primary">Thursday, 4:00 PM</p>
+</div>
+<button class="w-full py-4 bg-primary text-white text-[16px] font-bold rounded-xl shadow-lg shadow-primary/20 hover:bg-primary-dark active:scale-[0.98] transition-all">
+                    Choose This Barber
+                </button>
+</div>
+</div>
+<!-- Secondary Action -->
+<div class="mt-12 flex justify-center">
+<button class="flex items-center gap-1 text-text-secondary hover:text-primary transition-all group py-2 border-b border-border-color hover:border-primary">
+<span class="text-[14px] font-bold">Choose Another Time</span>
+<span class="material-symbols-outlined text-[18px] group-hover:translate-x-1 transition-transform">chevron_right</span>
+</button>
+</div>
+</main>
+<!-- Bottom Navigation -->
+<nav class="fixed bottom-0 left-0 right-0 h-[84px] bg-white border-t border-border-color flex justify-around items-center z-[100] px-4 md:hidden">
+<div class="flex flex-col items-center justify-center gap-1 cursor-pointer w-20 group">
+<span class="material-symbols-outlined text-[24px]" style="color: #E89A3D; font-variation-settings: 'FILL' 1;">home</span>
+<span class="text-[11px] font-bold" style="color: #E89A3D;">Home</span>
+</div>
+<div class="flex flex-col items-center justify-center gap-1 cursor-pointer w-20 text-text-secondary hover:text-primary transition-colors">
+<span class="material-symbols-outlined text-[24px]">calendar_today</span>
+<span class="text-[11px] font-bold">Bookings</span>
+</div>
+<div class="flex flex-col items-center justify-center gap-1 cursor-pointer w-20 text-text-secondary hover:text-primary transition-colors">
+<span class="material-symbols-outlined text-[24px]">person</span>
+<span class="text-[11px] font-bold">Profile</span>
+</div>
+</nav>
+<script>
+        // Micro-interactions for buttons
+        document.querySelectorAll('button').forEach(button => {
+            button.addEventListener('mousedown', (e) => {
+                const rect = button.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+                
+                let ripple = document.createElement('span');
+                ripple.style.position = 'absolute';
+                ripple.style.left = `${x}px`;
+                ripple.style.top = `${y}px`;
+                ripple.style.width = '20px';
+                ripple.style.height = '20px';
+                ripple.style.background = 'rgba(255,255,255,0.3)';
+                ripple.style.borderRadius = '50%';
+                ripple.style.transform = 'scale(0)';
+                ripple.style.transition = 'transform 0.5s ease-out, opacity 0.5s ease-out';
+                ripple.style.pointerEvents = 'none';
+                
+                button.style.position = 'relative';
+                button.style.overflow = 'hidden';
+                button.appendChild(ripple);
+                
+                setTimeout(() => {
+                    ripple.style.transform = 'scale(30)';
+                    ripple.style.opacity = '0';
+                }, 0);
+                
+                setTimeout(() => {
+                    ripple.remove();
+                }, 500);
+            });
+        });
+    </script>
+</body></html>

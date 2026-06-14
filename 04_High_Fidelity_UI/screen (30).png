@@ -1,0 +1,292 @@
+<!DOCTYPE html><html lang="en"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            font-size: 24px;
+        }
+        .hide-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .hide-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f9f9f9;
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "primary": "#1e1e1e",
+                        "on-secondary-fixed-variant": "#464747",
+                        "on-primary": "#ffffff",
+                        "secondary-fixed-dim": "#c7c6c6",
+                        "error": "#ba1a1a",
+                        "on-primary-fixed-variant": "#474747",
+                        "tertiary-fixed": "#e7e1de",
+                        "on-surface": "#1a1c1c",
+                        "on-background": "#1a1c1c",
+                        "on-secondary-container": "#626262",
+                        "inverse-surface": "#2f3131",
+                        "surface-tint": "#5f5e5e",
+                        "on-surface-variant": "#444748",
+                        "primary-fixed": "#e4e2e1",
+                        "surface-container-high": "#e8e8e8",
+                        "secondary-fixed": "#e4e2e2",
+                        "on-tertiary-container": "#9f9b98",
+                        "surface-dim": "#dadada",
+                        "primary-container": "#333333",
+                        "tertiary-container": "#353331",
+                        "on-primary-fixed": "#1b1c1c",
+                        "error-container": "#ffdad6",
+                        "surface-container-low": "#f4f3f3",
+                        "inverse-primary": "#c8c6c6",
+                        "surface-container-highest": "#e2e2e2",
+                        "on-tertiary-fixed": "#1d1b1a",
+                        "on-error-container": "#93000a",
+                        "tertiary": "#201e1c",
+                        "on-tertiary-fixed-variant": "#494644",
+                        "tertiary-fixed-dim": "#cac6c2",
+                        "secondary": "#5e5e5e",
+                        "on-secondary-fixed": "#1b1c1c",
+                        "surface-container": "#eeeeee",
+                        "on-secondary": "#ffffff",
+                        "background": "#f9f9f9",
+                        "surface-bright": "#f9f9f9",
+                        "primary-fixed-dim": "#c8c6c6",
+                        "surface-variant": "#e2e2e2",
+                        "on-primary-container": "#9c9b9b",
+                        "outline-variant": "#c4c7c7",
+                        "outline": "#747878",
+                        "secondary-container": "#e1dfdf",
+                        "on-tertiary": "#ffffff",
+                        "surface-container-lowest": "#ffffff",
+                        "inverse-on-surface": "#f1f1f1",
+                        "surface": "#f9f9f9",
+                        "on-error": "#ffffff",
+                        "accent-orange": "#E89A3D"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "stack-xs": "4px",
+                        "stack-sm": "8px",
+                        "stack-xl": "64px",
+                        "stack-lg": "32px",
+                        "gutter": "24px",
+                        "unit": "8px",
+                        "stack-md": "16px",
+                        "margin-mobile": "24px",
+                        "margin-desktop": "64px"
+                    }
+                },
+            },
+        }
+    </script>
+</head>
+<body class="text-on-surface min-h-screen">
+<!-- Header Section -->
+<header class="w-full top-0 sticky bg-background/80 backdrop-blur-md z-40 flex items-center px-margin-mobile h-[72px]">
+<button aria-label="Go back" class="mr-4 p-2 -ml-2 transition-colors duration-200 hover:bg-black/5 rounded-full">
+<span class="material-symbols-outlined text-primary" data-icon="arrow_back">arrow_back</span>
+</button>
+<div class="flex flex-col">
+<h1 class="text-[28px] font-bold text-primary leading-tight">Choose Date &amp; Time</h1>
+<p class="text-xs font-medium text-secondary">We found the best barber for your service</p>
+</div>
+</header>
+<main class="max-w-[1280px] mx-auto px-margin-mobile py-stack-sm pb-40">
+<!-- Recommended Barber Section -->
+<section class="mb-stack-lg">
+<div class="relative bg-surface-container-lowest rounded-xl p-6 shadow-sm border border-outline-variant/30 overflow-hidden">
+<!-- Accent Bar -->
+<div class="absolute left-0 top-0 bottom-0 w-1 bg-accent-orange"></div>
+<div class="mb-4">
+<span class="inline-flex items-center gap-1.5 text-[10px] font-bold uppercase tracking-widest text-accent-orange bg-accent-orange/10 px-3 py-1 rounded-full">
+<span class="material-symbols-outlined !text-[12px] fill-1">star</span> RECOMMENDED FOR HAIRCUT
+                    </span>
+</div>
+<div class="flex items-center gap-4">
+<!-- Profile Image -->
+<div class="relative">
+<img alt="Samir Bhai" class="w-16 h-16 rounded-lg object-cover border border-outline-variant" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA3iHKLPbujBC-2HB827VVtduZcJPiNKAWVUQQexogwF3Iml-Rs5MFb7aJgzf2pnNN0j59ivTJW-ziqXaQLaDuoQmGXylEJ7x-iBjkIBo5EETTCxS7-6VcA4IUuZg_MW-EZ_48FsIzkMflkepehiMmA2uawZ99kDp0wHk6nfNuHuPei_jJO1Ydcd_E4QS2OAVA8ECJxR_bb-SswwZew21K23SQRNGLhjD-qbQDg6JgGOa4iNvkwmEtY4hmPdK0OfIilJEiCwVd-j2dz">
+<div class="absolute -bottom-1 -right-1 bg-green-500 w-3.5 h-3.5 rounded-full border-2 border-white"></div>
+</div>
+<div class="flex-1">
+<div class="flex justify-between items-start">
+<div>
+<h2 class="text-base font-bold text-primary">Samir Bhai</h2>
+<p class="text-sm text-secondary">Fade Specialist</p>
+</div>
+<div class="flex items-center gap-1 bg-surface-container px-2 py-0.5 rounded-lg">
+<span class="material-symbols-outlined !text-[14px] text-accent-orange" style="font-variation-settings: 'FILL' 1">star</span>
+<span class="text-sm font-bold text-primary">4.9</span>
+</div>
+</div>
+<div class="mt-1">
+<span class="text-xs font-semibold text-green-600">Available Today</span>
+</div>
+</div>
+</div>
+<div class="mt-5 pt-4 border-t border-outline-variant flex justify-between items-center">
+<p class="text-xs font-medium text-secondary italic">Most booked for haircuts</p>
+<button class="text-xs font-bold text-primary hover:text-accent-orange transition-colors underline decoration-accent-orange/30 underline-offset-4">
+                        Choose Another Barber
+                    </button>
+</div>
+</div>
+</section>
+<!-- Date Selector -->
+<section class="mb-stack-lg">
+<div class="flex items-center justify-between mb-4">
+<h3 class="text-base font-bold tracking-tight">Select Date</h3>
+<span class="text-xs font-bold text-secondary">October 2023</span>
+</div>
+<div class="flex gap-4 overflow-x-auto hide-scrollbar py-1">
+<!-- Date Chip: Selected -->
+<button class="flex-shrink-0 flex flex-col items-center justify-center w-16 h-[88px] bg-accent-orange text-on-primary rounded-xl shadow-lg transition-all active:scale-95">
+<span class="text-[10px] font-bold uppercase tracking-wider opacity-70 mb-1">MON</span>
+<span class="text-xl font-bold">14</span>
+</button>
+<!-- Date Chip: Unselected -->
+<button class="flex-shrink-0 flex flex-col items-center justify-center w-16 h-[88px] bg-surface-container-lowest text-primary rounded-xl border border-outline-variant transition-all active:scale-95 hover:border-accent-orange">
+<span class="text-[10px] font-bold uppercase tracking-wider text-secondary mb-1">TUE</span>
+<span class="text-xl font-bold">15</span>
+</button>
+<button class="flex-shrink-0 flex flex-col items-center justify-center w-16 h-[88px] bg-surface-container-lowest text-primary rounded-xl border border-outline-variant transition-all active:scale-95">
+<span class="text-[10px] font-bold uppercase tracking-wider text-secondary mb-1">WED</span>
+<span class="text-xl font-bold">16</span>
+</button>
+<button class="flex-shrink-0 flex flex-col items-center justify-center w-16 h-[88px] bg-surface-container-lowest text-primary rounded-xl border border-outline-variant transition-all active:scale-95">
+<span class="text-[10px] font-bold uppercase tracking-wider text-secondary mb-1">THU</span>
+<span class="text-xl font-bold">17</span>
+</button>
+<button class="flex-shrink-0 flex flex-col items-center justify-center w-16 h-[88px] bg-surface-container-lowest text-primary rounded-xl border border-outline-variant transition-all active:scale-95">
+<span class="text-[10px] font-bold uppercase tracking-wider text-secondary mb-1">FRI</span>
+<span class="text-xl font-bold">18</span>
+</button>
+</div>
+</section>
+<!-- Time Slots -->
+<section class="mb-stack-lg">
+<h3 class="text-base font-bold tracking-tight mb-5">Best Available Slots</h3>
+<!-- Morning -->
+<div class="mb-6">
+<div class="flex items-center gap-2 mb-3">
+<span class="material-symbols-outlined !text-[18px] text-accent-orange">light_mode</span>
+<p class="text-[10px] font-bold text-secondary uppercase tracking-widest">Morning</p>
+</div>
+<div class="grid grid-cols-3 gap-4">
+<button class="h-12 flex items-center justify-center bg-surface-container-lowest border border-outline-variant rounded-lg text-primary font-bold text-sm hover:border-accent-orange transition-all active:scale-95">09:00</button>
+<button class="h-12 flex items-center justify-center bg-surface-container-lowest border border-outline-variant rounded-lg text-primary font-bold text-sm hover:border-accent-orange transition-all active:scale-95">09:30</button>
+</div>
+</div>
+<!-- Afternoon -->
+<div class="mb-6">
+<div class="flex items-center gap-2 mb-3">
+<span class="material-symbols-outlined !text-[18px] text-accent-orange">wb_sunny</span>
+<p class="text-[10px] font-bold text-secondary uppercase tracking-widest">Afternoon</p>
+</div>
+<div class="grid grid-cols-3 gap-4">
+<button class="h-12 flex items-center justify-center bg-surface-container-lowest border border-outline-variant rounded-lg text-primary font-bold text-sm hover:border-accent-orange transition-all active:scale-95">14:00</button>
+<button class="h-12 flex items-center justify-center bg-surface-container-lowest border border-outline-variant rounded-lg text-primary font-bold text-sm hover:border-accent-orange transition-all active:scale-95">14:30</button>
+<button class="h-12 flex items-center justify-center bg-surface-container-lowest border border-outline-variant rounded-lg text-primary font-bold text-sm hover:border-accent-orange transition-all active:scale-95">15:00</button>
+</div>
+</div>
+<!-- Evening -->
+<div class="mb-6">
+<div class="flex items-center gap-2 mb-3">
+<span class="material-symbols-outlined !text-[18px] text-accent-orange">dark_mode</span>
+<p class="text-[10px] font-bold text-secondary uppercase tracking-widest">Evening</p>
+</div>
+<div class="grid grid-cols-3 gap-4">
+<button class="h-12 flex items-center justify-center bg-surface-container-lowest border border-outline-variant rounded-lg text-primary font-bold text-sm hover:border-accent-orange transition-all active:scale-95">17:00</button>
+</div>
+</div>
+</section>
+<!-- Bottom Action Button -->
+<div class="fixed bottom-[88px] left-0 w-full px-margin-mobile py-4 bg-background/80 backdrop-blur-md z-40 border-t border-outline-variant/10">
+<button class="w-full h-14 rounded-xl bg-surface-container-high text-on-surface-variant font-bold shadow-sm transition-all opacity-50 cursor-not-allowed" disabled="" id="continue-btn">
+                Confirm Booking
+            </button>
+</div>
+</main>
+<!-- Bottom Navigation -->
+<nav class="fixed bottom-0 left-0 w-full h-[88px] bg-surface-container-lowest border-t border-outline-variant flex items-center justify-around px-margin-mobile z-50">
+<a class="flex flex-col items-center gap-1.5 text-accent-orange" href="#">
+<div class="relative">
+<span class="material-symbols-outlined !text-[28px]" style="font-variation-settings: 'FILL' 1">home</span>
+<div class="absolute -top-0.5 -right-0.5 w-1.5 h-1.5 bg-accent-orange rounded-full"></div>
+</div>
+<span class="text-[10px] font-bold uppercase tracking-wider">Home</span>
+</a>
+<a class="flex flex-col items-center gap-1.5 text-secondary hover:text-primary transition-colors" href="#">
+<span class="material-symbols-outlined !text-[28px]">calendar_month</span>
+<span class="text-[10px] font-bold uppercase tracking-wider">Bookings</span>
+</a>
+<a class="flex flex-col items-center gap-1.5 text-secondary hover:text-primary transition-colors" href="#">
+<span class="material-symbols-outlined !text-[28px]">person</span>
+<span class="text-[10px] font-bold uppercase tracking-wider">Profile</span>
+</a>
+</nav>
+<script>
+        // Interaction logic for slot selection
+        const slotButtons = document.querySelectorAll('.grid button');
+        const continueBtn = document.getElementById('continue-btn');
+
+        slotButtons.forEach(btn => {
+            btn.addEventListener('click', () => {
+                const wasSelected = btn.classList.contains('bg-primary');
+                
+                slotButtons.forEach(b => {
+                    b.classList.remove('bg-primary', 'text-on-primary', 'border-primary', 'shadow-md');
+                    b.classList.add('bg-surface-container-lowest', 'text-primary', 'border-outline-variant');
+                });
+
+                if (!wasSelected) {
+                    btn.classList.remove('bg-surface-container-lowest', 'text-primary', 'border-outline-variant');
+                    btn.classList.add('bg-primary', 'text-on-primary', 'border-primary', 'shadow-md');
+                    
+                    // Enable continue button
+                    continueBtn.disabled = false;
+                    continueBtn.classList.remove('bg-surface-container-high', 'text-on-surface-variant', 'opacity-50', 'cursor-not-allowed');
+                    continueBtn.classList.add('bg-primary', 'text-on-primary', 'opacity-100', 'cursor-pointer', 'shadow-lg');
+                } else {
+                    // Disable continue button
+                    continueBtn.disabled = true;
+                    continueBtn.classList.add('bg-surface-container-high', 'text-on-surface-variant', 'opacity-50', 'cursor-not-allowed');
+                    continueBtn.classList.remove('bg-primary', 'text-on-primary', 'opacity-100', 'cursor-pointer', 'shadow-lg');
+                }
+            });
+        });
+
+        // Date selector logic
+        const dateChips = document.querySelectorAll('.flex-shrink-0');
+        dateChips.forEach(chip => {
+            chip.addEventListener('click', () => {
+                dateChips.forEach(c => {
+                    c.classList.remove('bg-primary', 'text-on-primary', 'shadow-lg');
+                    c.classList.add('bg-surface-container-lowest', 'text-primary', 'border', 'border-outline-variant');
+                });
+                chip.classList.remove('bg-surface-container-lowest', 'text-primary', 'border', 'border-outline-variant');
+                chip.classList.add('bg-primary', 'text-on-primary', 'shadow-lg');
+            });
+        });
+    </script>
+
+
+</body></html>

@@ -1,0 +1,262 @@
+<!DOCTYPE html><html class="light" lang="en" style=""><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>Bhai Looks Saloon - My Appointments</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface-container-lowest": "#ffffff",
+                        "primary-fixed": "#e4e2e1",
+                        "error": "#ba1a1a",
+                        "on-primary-container": "#9c9b9b",
+                        "surface-container": "#eeeeee",
+                        "on-tertiary-fixed-variant": "#494644",
+                        "secondary": "#5e5e5e",
+                        "inverse-surface": "#2f3131",
+                        "secondary-fixed-dim": "#c7c6c6",
+                        "on-primary": "#ffffff",
+                        "on-surface": "#1a1c1c",
+                        "error-container": "#ffdad6",
+                        "on-primary-fixed": "#1b1c1c",
+                        "surface-variant": "#e2e2e2",
+                        "on-tertiary-container": "#9f9b98",
+                        "tertiary-fixed": "#e7e1de",
+                        "surface-dim": "#dadada",
+                        "on-primary-fixed-variant": "#474747",
+                        "tertiary-fixed-dim": "#cac6c2",
+                        "surface-container-low": "#f4f3f3",
+                        "surface": "#f9f9f9",
+                        "outline": "#747878",
+                        "primary-container": "#333333",
+                        "surface-container-high": "#e8e8e8",
+                        "primary": "#1e1e1e",
+                        "tertiary-container": "#353331",
+                        "on-tertiary-fixed": "#1d1b1a",
+                        "primary-fixed-dim": "#c8c6c6",
+                        "tertiary": "#201e1c",
+                        "on-secondary-fixed-variant": "#464747",
+                        "surface-tint": "#5f5e5e",
+                        "secondary-fixed": "#e4e2e2",
+                        "surface-container-highest": "#e2e2e2",
+                        "on-background": "#1a1c1c",
+                        "on-surface-variant": "#444748",
+                        "on-error": "#ffffff",
+                        "surface-bright": "#f9f9f9",
+                        "on-error-container": "#93000a",
+                        "background": "#f9f9f9",
+                        "on-secondary-fixed": "#1b1c1c",
+                        "on-tertiary": "#ffffff",
+                        "inverse-on-surface": "#f1f1f1",
+                        "secondary-container": "#e1dfdf",
+                        "on-secondary-container": "#626262",
+                        "outline-variant": "#c4c7c7",
+                        "on-secondary": "#ffffff",
+                        "inverse-primary": "#c8c6c6"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "4px",
+                        "lg": "8px",
+                        "xl": "12px",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "unit": "8px",
+                        "stack-md": "16px",
+                        "stack-lg": "32px",
+                        "margin-desktop": "64px",
+                        "stack-sm": "8px",
+                        "stack-xs": "4px",
+                        "margin-mobile": "16px",
+                        "gutter": "24px",
+                        "stack-xl": "64px"
+                    },
+                    "fontFamily": {
+                        "headline-xl": ["Inter"],
+                        "body-lg": ["Inter"],
+                        "label-md": ["Inter"],
+                        "headline-md": ["Inter"],
+                        "headline-lg": ["Inter"],
+                        "body-sm": ["Inter"],
+                        "body-md": ["Inter"],
+                        "headline-xl-mobile": ["Inter"],
+                        "headline-lg-mobile": ["Inter"]
+                    },
+                    "fontSize": {
+                        "headline-xl": ["40px", {"lineHeight": "48px", "fontWeight": "600"}],
+                        "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                        "label-md": ["12px", {"lineHeight": "16px", "letterSpacing": "0.02em", "fontWeight": "500"}],
+                        "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                        "headline-lg": ["32px", {"lineHeight": "40px", "fontWeight": "600"}],
+                        "body-sm": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                        "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                        "headline-xl-mobile": ["32px", {"lineHeight": "40px", "fontWeight": "600"}],
+                        "headline-lg-mobile": ["24px", {"lineHeight": "32px", "fontWeight": "600"}]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f9f9f9;
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .bento-card {
+            background-color: #ffffff;
+            border: 1px solid #CCCCCC;
+            border-radius: 8px;
+            transition: all 0.2s ease;
+        }
+        .bento-card:active {
+            transform: scale(0.98);
+            border-color: #333333;
+        }
+        .appointment-tab-active {
+            border-bottom: 2px solid #333333;
+            font-weight: 700;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-background min-h-screen flex flex-col items-center">
+<!-- Top App Bar -->
+<header class="bg-surface fixed top-0 w-full max-w-[1280px] h-16 border-b border-outline-variant z-50 flex items-center justify-between px-margin-mobile md:px-margin-desktop">
+<div class="flex items-center gap-stack-md">
+<button class="material-symbols-outlined text-primary p-2 hover:bg-surface-container-high rounded-full transition-all active:scale-95">arrow_back</button>
+<h1 class="font-headline-lg-mobile text-headline-lg-mobile font-bold text-primary">My Appointments</h1>
+</div>
+<div class="flex items-center gap-stack-sm">
+<span class="material-symbols-outlined text-primary p-2">search</span>
+<span class="material-symbols-outlined text-primary p-2">account_circle</span>
+</div>
+</header>
+<!-- Main Content Canvas -->
+<main class="w-full max-w-[1280px] pt-24 pb-24 px-margin-mobile md:px-margin-desktop flex flex-col gap-stack-lg">
+<!-- Tab Navigation -->
+<nav class="flex w-full border-b border-outline-variant bg-surface sticky top-16 z-40">
+<button class="flex-1 py-4 font-label-md text-label-md text-primary appointment-tab-active" style="border-bottom-color: rgb(232, 154, 61); color: rgb(232, 154, 61);">Upcoming</button>
+<button class="flex-1 py-4 font-label-md text-label-md text-secondary hover:bg-surface-container-high">Completed</button>
+</nav>
+<!-- Bento Layout for Appointments -->
+<div class="grid grid-cols-1 md:grid-cols-12 gap-gutter">
+<!-- Primary Appointment Card (Active) -->
+<div class="md:col-span-8 flex flex-col gap-stack-md">
+<section class="bento-card p-stack-md flex flex-col gap-stack-md bg-white border-2 border-primary" style="border-color: rgb(232, 154, 61);">
+<div class="flex justify-between items-start">
+<div class="flex flex-col gap-stack-xs">
+<span class="inline-block px-2 py-1 bg-surface-container-high text-[10px] font-bold uppercase rounded tracking-wider border border-outline-variant" style="background-color: rgb(232, 154, 61); color: rgb(255, 255, 255); border-color: rgb(232, 154, 61);">Confirmed</span>
+<h2 class="font-headline-md text-headline-md text-primary">Haircut &amp; Beard Styling</h2>
+</div>
+<div class="text-right">
+<p class="font-label-md text-label-md text-secondary">Booking ID</p>
+<p class="font-label-md text-label-md font-bold text-primary">#BLS-987654</p>
+</div>
+</div>
+<div class="flex items-center gap-stack-md py-stack-sm border-y border-outline-variant">
+<div class="w-16 h-16 rounded-lg bg-surface-container-high overflow-hidden border border-outline relative">
+<img alt="Barber Samir" class="w-full h-full object-cover" data-alt="A professional close-up portrait of Samir Bhai, a male barber with a well-groomed beard and stylish hair, wearing a clean professional black apron in a minimalist white-walled salon environment. The lighting is soft and clinical, highlighting the texture of his hair and the professional tools in the background. The aesthetic is clean, technical, and high-fidelity wireframe style." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAbNDUB0fwaVY_8p3edMJqworty-02wfI_9ejQY0D3HB4gYwBkhJ5vArPvDiIaYS1rQjJd3LJnmNT6ewyBTAedvmeHPF2PiLDNA-1OMUMksiUAZ7v9jwAyVkPej4dTL1f4flQFpPySWS5cqSWpZLIPKLb-ppzP2lQE68eru3e2pmOYa4E7a-BRFVrkN01YiToDGWHqJV1cxtNeaCuD96Hll9AsnLyMlDJdF5iholbKbpsEu7y7p_eBWPQKelHgSM_qr1utHqllJ_Js2">
+</div>
+<div class="flex flex-col">
+<p class="font-label-md text-label-md text-secondary">Stylist</p>
+<p class="font-body-md text-body-md font-bold text-primary">Samir Bhai</p>
+<div class="flex items-center gap-1 text-[11px] text-primary">
+<span class="material-symbols-outlined text-[14px]">star</span>
+<span class="">4.9 (124 reviews)</span>
+</div>
+</div>
+</div>
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-stack-md py-stack-sm">
+<div class="flex items-start gap-stack-sm">
+<span class="material-symbols-outlined text-secondary">calendar_month</span>
+<div class="flex flex-col">
+<p class="font-label-md text-label-md text-secondary">Date &amp; Time</p>
+<p class="font-body-sm text-body-sm font-bold text-primary">Sat, 24 Nov 2024</p>
+<p class="font-body-sm text-body-sm text-primary">10:00 AM - 11:00 AM</p>
+</div>
+</div>
+<div class="flex items-start gap-stack-sm">
+<span class="material-symbols-outlined text-secondary">location_on</span>
+<div class="flex flex-col">
+<p class="font-label-md text-label-md text-secondary">Location</p>
+<p class="font-body-sm text-body-sm font-bold text-primary">Bhai Looks Saloon</p>
+<p class="font-body-sm text-body-sm text-primary">Pamuru, India</p>
+</div>
+</div>
+</div>
+<div class="flex gap-stack-md mt-stack-sm">
+<button class="flex-1 py-3 border border-primary rounded-lg font-bold text-primary text-label-md hover:bg-surface-container-high active:scale-95 transition-all" style="background-color: rgb(232, 154, 61); color: rgb(255, 255, 255); border-color: rgb(232, 154, 61);">Reschedule</button>
+<button class="flex-1 py-3 border border-outline rounded-lg font-bold text-secondary text-label-md hover:bg-error-container hover:text-error hover:border-error active:scale-95 transition-all" style="border-color: rgb(196, 199, 199); color: rgb(94, 94, 94);">Cancel</button>
+</div>
+</section>
+<!-- Informational Section/Help -->
+<section class="bg-surface-container-low border border-outline-variant p-stack-md rounded-lg flex gap-stack-md items-center">
+<span class="material-symbols-outlined text-primary">info</span>
+<p class="font-body-sm text-body-sm text-secondary">Please arrive 10 minutes before your scheduled time for a better experience.</p>
+</section>
+</div>
+<!-- Side Bento Column -->
+<div class="md:col-span-4 flex flex-col gap-stack-md">
+<!-- Location Map Placeholder -->
+<div class="bento-card overflow-hidden h-48 relative">
+<div class="absolute inset-0 bg-surface-container-high flex flex-col items-center justify-center text-outline-variant">
+<span class="material-symbols-outlined text-4xl mb-2">map</span>
+<p class="font-label-md">View on Maps</p>
+</div>
+<img alt="Salon Location Map" class="w-full h-full object-cover opacity-60 grayscale hover:grayscale-0 transition-all cursor-pointer" data-location="Pamuru" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAPbhAa7VCXz4ZwpMpz-wHW-vxwFcMZxG3Z8Q998iVzwOdWhvOwiGRR_t5Vh_8CSm-l6VW3S4OjxUC9atnIeJM7NsD7j-rTqfa-2d3N_J89JZb6UgJA_qG4fx0B5Ot_TeoDAZmAlUMcnlknU-f_YFl_i15cGeauthPUh8D9mKqyyyfmSR5Cv6W5NLrO0DNFy5Y7LulOAroBv_LCaudbT5PaKGh3YeF21xB-KWRmBY7Frk9VmwzsudnRSCqIVuqpTvLf4ReQV8tovbvt">
+</div>
+<!-- Price Summary -->
+<div class="bento-card p-stack-md bg-white">
+<h3 class="font-label-md text-label-md font-bold text-primary mb-stack-sm">Price Details</h3>
+<div class="flex justify-between font-body-sm text-body-sm text-secondary mb-1">
+<span class="">Haircut</span>
+<span class="">₹299</span>
+</div>
+<div class="flex justify-between font-body-sm text-body-sm text-secondary mb-1">
+<span class="">Beard Styling</span>
+<span class="">₹149</span>
+</div>
+<div class="border-t border-outline-variant my-stack-sm pt-stack-sm flex justify-between font-bold text-primary">
+<span class="">Total Paid</span>
+<span class="">₹448</span>
+</div>
+</div>
+<!-- Policy Card -->
+<div class="p-stack-md bg-tertiary-container text-white rounded-lg">
+<h3 class="font-label-md text-label-md font-bold mb-stack-xs">Refund Policy</h3>
+<p class="text-[11px] leading-tight text-on-primary-container">Cancellations made 24 hours before the appointment are eligible for a 100% refund.</p>
+</div>
+</div>
+</div>
+</main>
+<!-- Bottom Navigation Bar -->
+<nav class="fixed bottom-0 left-0 w-full z-50 bg-surface border-t border-outline-variant flex justify-around items-center px-4 py-2 h-16 max-w-[1280px] self-center">
+<div class="flex flex-col items-center justify-center text-on-secondary-container dark:text-on-secondary-fixed-variant hover:bg-surface-container cursor-pointer px-4 py-1 rounded-lg transition-all active:scale-95 group">
+<span class="material-symbols-outlined text-primary">home</span>
+<span class="font-label-md text-label-md text-secondary">Home</span>
+</div>
+<div class="flex flex-col items-center justify-center text-primary dark:text-inverse-primary hover:bg-surface-container cursor-pointer px-4 py-1 rounded-lg transition-all active:scale-95 group">
+<span class="material-symbols-outlined">calendar_month</span>
+<span class="font-label-md text-label-md text-primary">Appointments</span>
+</div>
+<div class="flex flex-col items-center justify-center text-on-secondary-container dark:text-on-secondary-fixed-variant hover:bg-surface-container cursor-pointer px-4 py-1 rounded-lg transition-all active:scale-95 group font-bold" style="color: rgb(232, 154, 61);">
+<span class="material-symbols-outlined text-primary" style="font-variation-settings: &quot;FILL&quot; 1; color: rgb(232, 154, 61);">person</span>
+<span class="font-label-md text-label-md text-secondary" style="color: rgb(232, 154, 61);">Profile</span>
+</div>
+</nav>
+
+
+</body></html>

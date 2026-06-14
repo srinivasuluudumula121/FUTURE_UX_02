@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Bhai Looks Saloon - Phone Entry</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        body {
+            background-color: #F3EEE8;
+            color: #1a1c1c;
+            max-width: 390px;
+            margin: 0 auto;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            position: relative;
+            border-left: 1px solid #E5E1DA;
+            border-right: 1px solid #E5E1DA;
+            font-family: 'Manrope', sans-serif;
+        }
+        ::selection {
+            background: #E89A3D;
+            color: white;
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "primary-brand": "#E89A3D",
+                        "background": "#F3EEE8",
+                        "inverse-surface": "#2f3131",
+                        "surface-container-highest": "#e2e2e2",
+                        "on-surface-variant": "#5F5B57",
+                        "on-tertiary": "#ffffff",
+                        "on-secondary": "#ffffff",
+                        "on-secondary-fixed-variant": "#464747",
+                        "on-tertiary-fixed": "#1d1b1a",
+                        "on-error": "#ffffff",
+                        "error-container": "#ffdad6",
+                        "surface-tint": "#5f5e5e",
+                        "primary-fixed": "#e4e2e1",
+                        "on-secondary-fixed": "#1b1c1c",
+                        "on-tertiary-fixed-variant": "#494644",
+                        "surface-container-lowest": "#ffffff",
+                        "surface-container": "#eeeeee",
+                        "error": "#ba1a1a",
+                        "on-secondary-container": "#626262",
+                        "tertiary": "#201e1c",
+                        "on-surface": "#2D2A26",
+                        "on-primary-container": "#9c9b9b",
+                        "primary": "#1e1e1e",
+                        "tertiary-fixed": "#e7e1de",
+                        "on-error-container": "#93000a",
+                        "surface-variant": "#e2e2e2",
+                        "on-primary": "#ffffff",
+                        "primary-fixed-dim": "#c8c6c6",
+                        "on-primary-fixed": "#1b1c1c",
+                        "surface-dim": "#dadada",
+                        "on-tertiary-container": "#9f9b98",
+                        "tertiary-fixed-dim": "#cac6c2",
+                        "surface-container-high": "#e8e8e8",
+                        "primary-container": "#333333",
+                        "surface": "#FDFCFB",
+                        "on-background": "#2D2A26",
+                        "tertiary-container": "#353331",
+                        "surface-container-low": "#f4f3f3",
+                        "inverse-primary": "#c8c6c6",
+                        "surface-bright": "#f9f9f9",
+                        "secondary-fixed": "#e4e2e2",
+                        "secondary": "#5e5e5e",
+                        "inverse-on-surface": "#f1f1f1",
+                        "secondary-container": "#e1dfdf",
+                        "outline-variant": "#DED9D4",
+                        "on-primary-fixed-variant": "#474747",
+                        "secondary-fixed-dim": "#c7c6c6",
+                        "outline": "#B0ACA7"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "12px",
+                        "xl": "16px",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "margin-mobile": "24px",
+                        "gutter": "24px",
+                        "stack-xl": "64px",
+                        "stack-md": "16px",
+                        "margin-desktop": "64px",
+                        "unit": "8px",
+                        "stack-sm": "12px",
+                        "stack-lg": "32px",
+                        "stack-xs": "4px"
+                    }
+                },
+            },
+        }
+    </script>
+</head>
+<body class="bg-background">
+<!-- Top Navigation -->
+<header class="w-full top-0 sticky bg-background/80 backdrop-blur-md flex items-center px-margin-mobile h-[72px] z-10">
+<div class="flex items-center gap-4 w-full">
+<button aria-label="Go back" class="p-2 -ml-2 transition-colors duration-200 hover:bg-black/5 rounded-full">
+<span class="material-symbols-outlined text-on-surface font-semibold">arrow_back</span>
+</button>
+<div class="flex flex-col">
+<span class="text-[11px] font-bold uppercase tracking-wider text-on-surface-variant/70 leading-none mb-1">Step 4 of 5</span>
+<h1 class="text-[28px] font-extrabold text-on-surface tracking-tight leading-tight">Almost Done</h1>
+</div>
+</div>
+</header>
+<!-- Content Canvas -->
+<main class="flex-grow px-margin-mobile pt-stack-lg pb-stack-xl">
+<!-- Supporting Text -->
+<section class="mb-8">
+<p class="text-[18px] leading-relaxed text-on-surface-variant font-medium">
+                Enter your mobile number to receive booking confirmation and reminders.
+            </p>
+</section>
+<!-- Input Section -->
+<section class="space-y-6">
+<div class="group">
+<label class="block text-[14px] font-bold text-on-surface mb-2 px-1" for="phone-input">Mobile Number</label>
+<div class="flex items-center border border-outline/40 rounded-xl bg-white overflow-hidden focus-within:border-primary-brand transition-all duration-300 h-14 shadow-sm">
+<span class="px-4 text-[16px] font-bold text-on-surface border-r border-outline-variant h-full flex items-center bg-[#FDFCFB]">+91</span>
+<input class="w-full h-full px-4 border-none focus:ring-0 bg-transparent text-[16px] font-semibold text-on-surface placeholder:text-outline/60" id="phone-input" maxlength="10" placeholder="Enter mobile number" type="tel"/>
+</div>
+</div>
+<!-- Trust Note -->
+<div class="flex items-start gap-3 px-1">
+<span class="material-symbols-outlined text-primary-brand text-[20px] mt-0.5">verified</span>
+<p class="text-[13px] leading-snug text-on-surface-variant font-medium">
+                    We’ll only use your number for appointment updates and secure login.
+                </p>
+</div>
+</section>
+<!-- Trust Section (High Fidelity) -->
+<div class="mt-12 p-8 border border-outline/20 border-dashed rounded-xl flex flex-col items-center justify-center text-center bg-white/40">
+<div class="w-16 h-16 rounded-full bg-white shadow-sm border border-outline/10 mb-4 flex items-center justify-center">
+<span class="material-symbols-outlined text-primary-brand text-3xl font-light">shield_with_heart</span>
+</div>
+<p class="text-[14px] font-bold text-on-surface mb-1">Secure verification</p>
+<p class="text-[12px] text-on-surface-variant px-4 leading-relaxed">Encryption-backed authentication powered by Bhai Looks Saloon</p>
+</div>
+</main>
+<!-- Bottom Navigation Shell (Action Bar) -->
+<footer class="fixed w-[390px] bg-background px-margin-mobile py-6 flex flex-col gap-4 border-t border-outline/10 z-20 bottom-[84px]">
+<button class="w-full h-14 rounded-xl bg-[#DCD6CF] text-white/60 font-bold text-[16px] shadow-sm cursor-not-allowed transition-all duration-300 flex items-center justify-center gap-2" disabled="" id="otp-button">
+            Send OTP
+        </button>
+</footer>
+<!-- Bottom Navigation Bar -->
+<nav class="fixed bottom-0 w-[390px] h-[84px] bg-white border-t border-outline-variant flex items-center justify-around z-30 px-4">
+<button class="flex flex-col items-center gap-1 text-primary-brand">
+<span class="material-symbols-outlined text-[26px]" style="font-variation-settings: 'FILL' 1;">home</span>
+<span class="text-[11px] font-extrabold uppercase tracking-wide">Home</span>
+</button>
+<button class="flex flex-col items-center gap-1 text-on-surface-variant/50 hover:text-primary-brand transition-colors">
+<span class="material-symbols-outlined text-[26px]">calendar_today</span>
+<span class="text-[11px] font-bold uppercase tracking-wide">Bookings</span>
+</button>
+<button class="flex flex-col items-center gap-1 text-on-surface-variant/50 hover:text-primary-brand transition-colors">
+<span class="material-symbols-outlined text-[26px]">person</span>
+<span class="text-[11px] font-bold uppercase tracking-wide">Profile</span>
+</button>
+</nav>
+<script>
+        const phoneInput = document.getElementById('phone-input');
+        const otpButton = document.getElementById('otp-button');
+
+        phoneInput.addEventListener('input', (e) => {
+            e.target.value = e.target.value.replace(/[^0-9]/g, '');
+            
+            if (e.target.value.length === 10) {
+                otpButton.disabled = false;
+                otpButton.classList.remove('bg-[#DCD6CF]', 'text-white/60', 'cursor-not-allowed');
+                otpButton.classList.add('bg-primary-brand', 'text-white', 'shadow-lg', 'shadow-primary-brand/20', 'active:scale-[0.98]');
+            } else {
+                otpButton.disabled = true;
+                otpButton.classList.add('bg-[#DCD6CF]', 'text-white/60', 'cursor-not-allowed');
+                otpButton.classList.remove('bg-primary-brand', 'text-white', 'shadow-lg', 'shadow-primary-brand/20', 'active:scale-[0.98]');
+            }
+        });
+
+        otpButton.addEventListener('click', () => {
+            if (!otpButton.disabled) {
+                const originalText = otpButton.textContent;
+                otpButton.innerHTML = `<span class="inline-block animate-spin material-symbols-outlined text-white">progress_activity</span>`;
+                otpButton.classList.add('opacity-90');
+                setTimeout(() => {
+                    otpButton.textContent = "OTP Sent!";
+                    otpButton.classList.remove('opacity-90');
+                }, 1200);
+            }
+        });
+    </script>
+</body></html>

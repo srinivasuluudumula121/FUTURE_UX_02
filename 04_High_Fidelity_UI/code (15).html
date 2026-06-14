@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Review Booking - Bhai Looks Saloon</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&amp;family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            display: inline-block;
+            line-height: 1;
+            text-transform: none;
+            letter-spacing: normal;
+            word-wrap: normal;
+            white-space: nowrap;
+            direction: ltr;
+        }
+        body {
+            font-family: 'Manrope', sans-serif;
+            background-color: #F3EEE8;
+            min-height: 100dvh;
+        }
+        .content-card {
+            background-color: #ffffff;
+            border-radius: 16px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+        }
+        .dotted-divider {
+            border-top: 2px dotted #E2E2E2;
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "brand-orange": "#E89A3D",
+                      "surface": "#ffffff",
+                      "on-surface": "#1a1c1c",
+                      "on-surface-variant": "#626262",
+                      "outline-variant": "#E2E2E2",
+                      "background": "#F3EEE8"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.25rem",
+                      "lg": "8px",
+                      "xl": "12px",
+                      "2xl": "16px",
+                      "full": "9999px"
+              },
+              "spacing": {
+                      "unit": "8px",
+                      "margin-desktop": "64px",
+                      "margin-mobile": "24px",
+                      "stack-md": "16px",
+                      "gutter": "24px",
+                      "stack-xs": "4px",
+                      "stack-lg": "32px",
+                      "stack-xl": "64px",
+                      "stack-sm": "8px"
+              }
+            },
+          },
+        }
+    </script>
+</head>
+<body class="text-on-surface antialiased flex flex-col pb-[168px]">
+<!-- TopAppBar -->
+<header class="w-full top-0 sticky z-40 bg-white/80 backdrop-blur-md border-b border-black/5">
+<div class="flex items-center justify-between px-6 h-[72px] w-full max-w-[600px] mx-auto">
+<div class="flex items-center gap-4">
+<button class="material-symbols-outlined text-on-surface p-2 -ml-2 rounded-full hover:bg-black/5 transition-colors">arrow_back</button>
+<div class="flex flex-col">
+<span class="text-[12px] font-bold text-on-surface-variant uppercase tracking-wider">Step 5 of 5</span>
+<h1 class="text-[28px] font-extrabold text-on-surface leading-tight">Review Booking</h1>
+</div>
+</div>
+</div>
+</header>
+<!-- Main Content Canvas -->
+<main class="flex-grow w-full max-w-[600px] mx-auto px-6 py-6 flex flex-col gap-4">
+<!-- Header Subtext -->
+<div class="flex flex-col gap-1">
+<p class="text-on-surface-variant text-[14px] leading-relaxed">Double-check your appointment details before finalizing.</p>
+</div>
+<!-- Main Booking Details -->
+<div class="flex flex-col gap-4">
+<!-- Service Summary Card -->
+<div class="content-card p-4 flex flex-col gap-4">
+<div class="flex justify-between items-start">
+<div class="flex gap-4 items-center">
+<img alt="Haircut service" class="w-14 h-14 rounded-xl object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDd5U6yYOenc9zO8JJ1qlvM6v9us9QLU9aeCfJEDCzFyPS0H7hRuMhn0QqxBTh_Zzj6s9mgHtSfnLl8x4-CO6j53QgubJfeqvqmeVITXAinNrASqWzIRKbZwvbv0TNHE5IrhovyJH5aciZTMHj-W4sUO2KmGbuAXt1922zHw-1Z_7hIuXDkwRIX_JIhLqnWRo7XNAFWu3Z5cKxCbsxf0XL780AW6ehp_FAIZdlnauXp7pQdNxQIg-XeIvWUyqgCpCKDiqsnBzE9mYhK"/>
+<div>
+<h2 class="font-bold text-[16px] text-on-surface">Haircut</h2>
+<p class="text-[14px] text-on-surface-variant">Samir Bhai • 30 min</p>
+</div>
+</div>
+<button class="text-[14px] font-medium text-brand-orange bg-brand-orange/10 px-4 py-1.5 rounded-full">Edit</button>
+</div>
+<div class="h-px bg-outline-variant w-full"></div>
+<div class="flex flex-col gap-2">
+<div class="flex items-center gap-3 text-on-surface-variant">
+<span class="material-symbols-outlined text-brand-orange text-[20px]">calendar_today</span>
+<span class="font-medium text-[14px] text-on-surface">Thursday, Oct 24</span>
+</div>
+<div class="flex items-center gap-3 text-on-surface-variant">
+<span class="material-symbols-outlined text-brand-orange text-[20px]">schedule</span>
+<span class="font-medium text-[14px] text-on-surface">4:00 PM (30 min)</span>
+</div>
+</div>
+</div>
+<!-- Barber Selection Mini Card -->
+<div class="content-card p-3 flex items-center justify-between">
+<div class="flex items-center gap-4">
+<img alt="Barber" class="w-10 h-10 rounded-full object-cover border-2 border-brand-orange/20" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAdJ9l98u7xTNK84-2zEWiHp5Cyf2_nF6KCQBenjpiGhrcJ1JgGKgbnSjiGLoUHI_w0HoDvgQhkEhAL9WzVLxrfEbC-JS62i151M4D47ODmBIsoCSHODvYvDKXdAXo4tec31D9B13YLU8vNC9QwkLQH8WUGPlGui4OOowK-s-tAfYs4Xo1Z0NJN0qWJ2aNHUJCbCwbqoXo6MoSOA9WNyh7QIpJ-TAjBPwV4jEaO-y3UY_Ji4W4YbT4I_2ZkBbrnQI6X3BzA488lTXXh"/>
+<div>
+<p class="text-[12px] font-bold text-on-surface-variant uppercase tracking-wider">Selected Barber</p>
+<p class="font-bold text-[14px] text-on-surface">Samir Bhai</p>
+</div>
+</div>
+<button class="p-2 hover:bg-black/5 rounded-full transition-colors">
+<span class="material-symbols-outlined text-on-surface-variant">edit</span>
+</button>
+</div>
+<!-- Price Summary Section -->
+<div class="content-card p-4 flex flex-col gap-3">
+<h3 class="text-[12px] font-extrabold text-on-surface-variant uppercase tracking-widest">Price Summary</h3>
+<div class="flex justify-between items-center">
+<span class="text-[14px] text-on-surface-variant">Haircut</span>
+<span class="font-bold text-[14px] text-on-surface">₹299</span>
+</div>
+<div class="dotted-divider w-full my-1"></div>
+<div class="flex justify-between items-center">
+<span class="text-[16px] font-semibold text-on-surface">Total Amount</span>
+<span class="text-[24px] font-extrabold text-brand-orange">₹299</span>
+</div>
+</div>
+<!-- Policy Note -->
+<div class="bg-black/5 p-4 rounded-[16px] flex gap-3">
+<span class="material-symbols-outlined text-brand-orange shrink-0">info</span>
+<p class="text-[12px] text-on-surface-variant leading-relaxed">
+                    Please arrive <span class="font-bold text-on-surface">10 minutes early</span>. Appointments may be reassigned or cancelled after a <span class="font-bold text-on-surface">15-minute delay</span> to ensure service for subsequent clients.
+                </p>
+</div>
+</div>
+</main>
+<!-- Sticky Bottom CTA -->
+<section class="fixed bottom-[84px] left-0 right-0 bg-white/80 backdrop-blur-md border-t border-black/5 p-6 z-40">
+<div class="max-w-[600px] mx-auto">
+<button class="w-full h-14 bg-brand-orange text-white font-extrabold rounded-2xl flex items-center justify-center gap-2 shadow-lg shadow-brand-orange/20" id="confirm-booking">
+<span>Confirm Booking</span>
+<span class="material-symbols-outlined font-bold">check_circle</span>
+</button>
+</div>
+</section>
+<!-- Persistent Bottom Navigation Bar -->
+<nav class="fixed bottom-0 left-0 right-0 bg-white h-[84px] border-t border-black/5 flex items-center justify-around z-50">
+<a class="flex flex-col items-center justify-center gap-1 w-full text-brand-orange" href="#">
+<span class="material-symbols-outlined text-[26px] variation-fill">home</span>
+<span class="text-[11px] font-bold">Home</span>
+</a>
+<a class="flex flex-col items-center justify-center gap-1 w-full text-on-surface-variant" href="#">
+<span class="material-symbols-outlined text-[26px]">calendar_month</span>
+<span class="text-[11px] font-bold">Appointments</span>
+</a>
+<a class="flex flex-col items-center justify-center gap-1 w-full text-on-surface-variant" href="#">
+<span class="material-symbols-outlined text-[26px]">person</span>
+<span class="text-[11px] font-bold">Profile</span>
+</a>
+</nav>
+<!-- Success Modal -->
+<div class="fixed inset-0 z-[60] flex items-center justify-center p-6 bg-black/60 backdrop-blur-md hidden" id="success-modal">
+<div class="bg-white rounded-3xl max-w-sm w-full p-8 flex flex-col items-center text-center gap-6 shadow-2xl">
+<div class="w-20 h-20 rounded-full bg-brand-orange/10 flex items-center justify-center">
+<span class="material-symbols-outlined text-[48px] text-brand-orange">verified</span>
+</div>
+<div>
+<h2 class="text-2xl font-extrabold text-on-surface mb-2">Booking Confirmed!</h2>
+<p class="text-[14px] text-on-surface-variant">We've sent the details to your phone. See you on Thursday at 4:00 PM.</p>
+</div>
+<button class="w-full h-14 bg-on-surface text-white font-bold rounded-2xl" onclick="location.reload()">Great, thanks!</button>
+</div>
+</div>
+<script>
+        const confirmBtn = document.getElementById('confirm-booking');
+        const successModal = document.getElementById('success-modal');
+
+        confirmBtn.addEventListener('click', () => {
+            const originalContent = confirmBtn.innerHTML;
+            confirmBtn.innerHTML = '<span class="animate-spin material-symbols-outlined">sync</span> Confirming...';
+            confirmBtn.disabled = true;
+            
+            setTimeout(() => {
+                successModal.classList.remove('hidden');
+                confirmBtn.innerHTML = originalContent;
+                confirmBtn.disabled = false;
+            }, 1200);
+        });
+    </script>
+<style>
+        .variation-fill {
+            font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+</body></html>

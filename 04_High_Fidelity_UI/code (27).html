@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            font-size: 24px;
+        }
+        .x-placeholder {
+            position: relative;
+            background-color: #E8E8E8;
+            overflow: hidden;
+        }
+        .x-placeholder::before, .x-placeholder::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 141%;
+            height: 1px;
+            background-color: #CCCCCC;
+        }
+        .x-placeholder::before { transform: translate(-50%, -50%) rotate(45deg); }
+        .x-placeholder::after { transform: translate(-50%, -50%) rotate(-45deg); }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f9f9f9;
+        }
+
+        .active-tab {
+            color: #1e1e1e;
+        }
+
+        .card-shadow {
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+        }
+
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .no-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "primary": "#1e1e1e",
+                        "on-secondary-fixed-variant": "#464747",
+                        "on-primary": "#ffffff",
+                        "secondary-fixed-dim": "#c7c6c6",
+                        "error": "#ba1a1a",
+                        "on-primary-fixed-variant": "#474747",
+                        "tertiary-fixed": "#e7e1de",
+                        "on-surface": "#1a1c1c",
+                        "on-background": "#1a1c1c",
+                        "on-secondary-container": "#626262",
+                        "inverse-surface": "#2f3131",
+                        "surface-tint": "#5f5e5e",
+                        "on-surface-variant": "#444748",
+                        "primary-fixed": "#e4e2e1",
+                        "surface-container-high": "#e8e8e8",
+                        "secondary-fixed": "#e4e2e2",
+                        "on-tertiary-container": "#9f9b98",
+                        "surface-dim": "#dadada",
+                        "primary-container": "#333333",
+                        "tertiary-container": "#353331",
+                        "on-primary-fixed": "#1b1c1c",
+                        "error-container": "#ffdad6",
+                        "surface-container-low": "#f4f3f3",
+                        "inverse-primary": "#c8c6c6",
+                        "surface-container-highest": "#e2e2e2",
+                        "on-tertiary-fixed": "#1d1b1a",
+                        "on-error-container": "#93000a",
+                        "tertiary": "#201e1c",
+                        "on-tertiary-fixed-variant": "#494644",
+                        "tertiary-fixed-dim": "#cac6c2",
+                        "secondary": "#5e5e5e",
+                        "on-secondary-fixed": "#1b1c1c",
+                        "surface-container": "#eeeeee",
+                        "on-secondary": "#ffffff",
+                        "background": "#f9f9f9",
+                        "surface-bright": "#f9f9f9",
+                        "primary-fixed-dim": "#c8c6c6",
+                        "surface-variant": "#e2e2e2",
+                        "on-primary-container": "#9c9b9b",
+                        "outline-variant": "#c4c7c7",
+                        "outline": "#747878",
+                        "secondary-container": "#e1dfdf",
+                        "on-tertiary": "#ffffff",
+                        "surface-container-lowest": "#ffffff",
+                        "inverse-on-surface": "#f1f1f1",
+                        "surface": "#f9f9f9",
+                        "on-error": "#ffffff",
+                        "brand-orange": "#E89A3D"
+                    },
+                    "borderRadius": {
+                        "card": "16px",
+                        "cta": "8px",
+                        "lg": "12px",
+                        "xl": "16px",
+                        "2xl": "20px",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "margin-desktop": "64px",
+                        "gutter": "24px",
+                        "stack-xl": "64px",
+                        "stack-md": "16px",
+                        "margin-mobile": "24px",
+                        "stack-lg": "32px",
+                        "stack-xs": "4px",
+                        "stack-sm": "8px",
+                        "unit": "8px"
+                    }
+                },
+            },
+        }
+    </script>
+</head>
+<body class="bg-background text-on-surface flex flex-col min-h-screen">
+<!-- Top Navigation -->
+<header class="w-full top-0 sticky bg-background/80 backdrop-blur-md border-b border-outline-variant/30 flex items-center px-margin-mobile h-16 z-40">
+<button aria-label="Go back" class="mr-4 active:scale-95 transition-transform">
+<span class="material-symbols-outlined text-primary" data-icon="arrow_back">arrow_back</span>
+</button>
+<div class="flex flex-col">
+<h1 class="text-[28px] font-bold text-primary leading-tight">Choose Date &amp; Time</h1>
+<p class="text-xs text-secondary font-medium">Select a slot with your barber</p>
+</div>
+</header>
+<main class="flex-grow px-margin-mobile pt-stack-md pb-48 max-w-xl mx-auto w-full">
+<!-- Summary Card -->
+<section class="bg-surface card-shadow rounded-card p-5 mb-stack-lg border border-outline-variant/20">
+<div class="flex items-center gap-4">
+<div class="w-14 h-14 rounded-xl x-placeholder flex-shrink-0" data-alt="Haircut placeholder"></div>
+<div class="flex-grow">
+<h2 class="text-lg font-extrabold text-primary">Haircut Selected</h2>
+<p class="text-sm text-secondary">Barber: <span class="font-bold text-on-surface">Samir Bhai</span></p>
+<p class="text-xs font-semibold text-brand-orange mt-0.5">30 min • ₹299</p>
+</div>
+</div>
+</section>
+<!-- Date Selector -->
+<section class="mb-stack-lg">
+<h3 class="text-[11px] font-extrabold text-secondary uppercase tracking-[0.1em] mb-4">Select Date</h3>
+<div class="flex overflow-x-auto gap-3 pb-2 no-scrollbar">
+<!-- Mon -->
+<button class="flex flex-col items-center justify-center min-w-[64px] h-[88px] rounded-xl bg-surface border border-outline-variant/30 text-secondary transition-all active:scale-95">
+<span class="text-xs font-semibold">Mon</span>
+<span class="text-lg font-extrabold">12</span>
+</button>
+<!-- Tue -->
+<button class="flex flex-col items-center justify-center min-w-[64px] h-[88px] rounded-xl bg-surface border border-outline-variant/30 text-secondary transition-all active:scale-95">
+<span class="text-xs font-semibold">Tue</span>
+<span class="text-lg font-extrabold">13</span>
+</button>
+<!-- Wed (Selected) -->
+<button class="flex flex-col items-center justify-center min-w-[64px] h-[88px] rounded-xl bg-brand-orange text-white shadow-lg shadow-brand-orange/20 transition-all active:scale-95">
+<span class="text-xs font-bold opacity-90">Wed</span>
+<span class="text-lg font-extrabold">14</span>
+</button>
+<!-- Thu -->
+<button class="flex flex-col items-center justify-center min-w-[64px] h-[88px] rounded-xl bg-surface border border-outline-variant/30 text-secondary transition-all active:scale-95">
+<span class="text-xs font-semibold">Thu</span>
+<span class="text-lg font-extrabold">15</span>
+</button>
+<!-- Fri -->
+<button class="flex flex-col items-center justify-center min-w-[64px] h-[88px] rounded-xl bg-surface border border-outline-variant/30 text-secondary transition-all active:scale-95">
+<span class="text-xs font-semibold">Fri</span>
+<span class="text-lg font-extrabold">16</span>
+</button>
+</div>
+</section>
+<!-- Time Slots -->
+<section class="space-y-8">
+<!-- Morning -->
+<div>
+<h3 class="text-[11px] font-extrabold text-secondary uppercase tracking-[0.1em] mb-4">Morning Slots</h3>
+<div class="grid grid-cols-3 gap-3">
+<button class="bg-surface border border-outline-variant/30 rounded-xl py-3.5 text-center text-sm font-bold text-primary hover:border-brand-orange transition-colors">9:00</button>
+<button class="bg-surface border border-outline-variant/30 rounded-xl py-3.5 text-center text-sm font-bold text-primary hover:border-brand-orange transition-colors">9:30</button>
+<button class="bg-surface border border-outline-variant/30 rounded-xl py-3.5 text-center text-sm font-bold text-primary hover:border-brand-orange transition-colors">10:00</button>
+</div>
+</div>
+<!-- Afternoon -->
+<div>
+<h3 class="text-[11px] font-extrabold text-secondary uppercase tracking-[0.1em] mb-4">Afternoon Slots</h3>
+<div class="grid grid-cols-3 gap-3">
+<button class="bg-surface border border-outline-variant/30 rounded-xl py-3.5 text-center text-sm font-bold text-primary hover:border-brand-orange transition-colors">2:00</button>
+<button class="bg-surface border border-outline-variant/30 rounded-xl py-3.5 text-center text-sm font-bold text-primary hover:border-brand-orange transition-colors">2:30</button>
+<button class="bg-outline-variant/20 rounded-xl py-3.5 text-center text-sm font-bold text-secondary/40 cursor-not-allowed" disabled="">3:00</button>
+<button class="bg-primary text-white rounded-xl py-3.5 text-center text-sm font-bold shadow-md">4:00</button>
+</div>
+<!-- CONFLICT STATE UI -->
+<div class="mt-8 border-2 border-error bg-surface card-shadow rounded-card overflow-hidden animate-in fade-in slide-in-from-top-4 duration-500" id="conflict-card">
+<!-- Alert Header -->
+<div class="bg-error/5 p-4 flex items-center gap-3">
+<span class="material-symbols-outlined text-error text-[20px]" data-icon="error">error</span>
+<p class="text-sm font-bold text-error">Samir Bhai is unavailable at 4:00 PM</p>
+</div>
+<!-- Conflict Explanation & Recommendations -->
+<div class="p-4">
+<p class="text-sm text-on-surface-variant mb-6">Choose one of the alternative options below to proceed with your booking.</p>
+<div class="space-y-4">
+<!-- Option 1 -->
+<div class="bg-surface-container-low rounded-xl p-6 border border-outline-variant/30">
+<h4 class="text-base font-bold text-primary mb-1">Arjun Available at 4:00 PM</h4>
+<p class="text-xs text-secondary mb-4">Highly rated for haircuts</p>
+<button class="w-full bg-primary text-white font-bold py-3 rounded-cta text-sm hover:opacity-90 transition-all active:scale-[0.98]">
+                                    Choose This Barber
+                                </button>
+</div>
+<!-- Option 2 -->
+<div class="bg-surface-container-low rounded-xl p-6 border border-outline-variant/30">
+<h4 class="text-base font-bold text-primary mb-1">Samir Bhai Next Available</h4>
+<p class="text-xs text-secondary mb-4">Next slot today at 5:00 PM</p>
+<button class="w-full bg-surface border border-primary text-primary font-bold py-3 rounded-cta text-sm hover:bg-primary hover:text-white transition-all active:scale-[0.98]">
+                                    Choose 5:00 PM
+                                </button>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer Container -->
+<div class="fixed bottom-0 left-0 w-full z-50">
+<!-- Sticky Bottom Button -->
+<div class="px-margin-mobile py-4 bg-background/90 backdrop-blur-md border-t border-outline-variant/30 flex justify-center">
+<button class="w-full max-w-xl py-4 bg-outline-variant text-secondary font-extrabold rounded-cta cursor-not-allowed opacity-60 transition-all" disabled="">
+                Continue
+            </button>
+</div>
+<!-- Bottom Navigation Bar -->
+<nav class="bg-surface border-t border-outline-variant/30 w-full h-[84px] flex justify-center">
+<div class="w-full max-w-xl flex items-center justify-around">
+<button class="flex flex-col items-center justify-center gap-1 active-tab transition-colors">
+<span class="material-symbols-outlined" style="font-size: 24px; font-variation-settings: 'FILL' 1;">home</span>
+<span class="text-[10px] font-extrabold uppercase tracking-wider">Home</span>
+</button>
+<button class="flex flex-col items-center justify-center gap-1 text-secondary/60 hover:text-primary transition-colors">
+<span class="material-symbols-outlined" style="font-size: 24px;">calendar_month</span>
+<span class="text-[10px] font-extrabold uppercase tracking-wider">Appointments</span>
+</button>
+<button class="flex flex-col items-center justify-center gap-1 text-secondary/60 hover:text-primary transition-colors">
+<span class="material-symbols-outlined" style="font-size: 24px;">person</span>
+<span class="text-[10px] font-extrabold uppercase tracking-wider">Profile</span>
+</button>
+</div>
+</nav>
+</div>
+<script>
+        document.querySelectorAll('button').forEach(btn => {
+            btn.addEventListener('click', (e) => {
+                if (!btn.disabled && !btn.classList.contains('cursor-not-allowed')) {
+                    // Interaction logic
+                }
+            });
+        });
+    </script>
+</body></html>
