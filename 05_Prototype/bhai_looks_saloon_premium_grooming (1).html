@@ -1,0 +1,771 @@
+<!DOCTYPE html>
+<html class="light" lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <title>Bhai Looks Salon - Premium Grooming</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/history@5/umd/history.development.js"></script>
+    <script src="https://unpkg.com/react-router@6.3.0/umd/react-router.development.js"></script>
+    <script src="https://unpkg.com/react-router-dom@6.3.0/umd/react-router-dom.development.js"></script>
+    <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#1e1e1e",
+                        "brand-orange": "#E89A3D",
+                        "surface": "#F3EEE8",
+                        "on-surface": "#1a1c1c",
+                        "on-surface-variant": "#6D6D6D",
+                        "outline-variant": "#E2D9D0",
+                        "surface-container": "#eeeeee",
+                    },
+                    borderRadius: {
+                        "brand": "16px",
+                        "2xl": "20px",
+                    },
+                    fontFamily: {
+                        sans: ["Manrope", "Inter", "sans-serif"],
+                    }
+                },
+            },
+        }
+    </script>
+    <style>
+        body { font-family: 'Manrope', sans-serif; background-color: #f3eee8; }
+        .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
+        .hide-scrollbar::-webkit-scrollbar { display: none; }
+        .hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+        .mobile-container {
+            width: 100%;
+            max-width: 390px;
+            height: 100vh;
+            margin: 0 auto;
+            position: relative;
+            background: #F3EEE8;
+            overflow-x: hidden;
+            display: flex;
+            flex-direction: column;
+            box-shadow: 0 0 40px rgba(0,0,0,0.1);
+        }
+        .content-scroll {
+            flex: 1;
+            overflow-y: auto;
+            padding-bottom: 180px;
+        }
+        .placeholder-img {
+            background-color: #E8E8E8;
+            position: relative;
+            overflow: hidden;
+        }
+        .placeholder-img::before, .placeholder-img::after {
+            content: ''; position: absolute; top: 50%; left: 50%; width: 141%; height: 1px; background-color: #CCCCCC;
+        }
+        .placeholder-img::before { transform: translate(-50%, -50%) rotate(45deg); }
+        .placeholder-img::after { transform: translate(-50%, -50%) rotate(-45deg); }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body>
+    <div id="root"></div>
+
+    <script type="text/babel">
+        const { useState, useEffect } = React;
+        const { createRoot } = ReactDOM;
+        const { MemoryRouter, Routes, Route, Link, useNavigate, useLocation } = ReactRouterDOM;
+
+        // Shared Components
+        const BottomNav = ({ active = 'home' }) => {
+            const navigate = useNavigate();
+            return (
+                <nav className="fixed bottom-0 max-w-[390px] w-full h-[84px] bg-white border-t border-outline-variant flex items-center justify-around px-4 pb-5 z-50">
+                    <div onClick={() => navigate('/')} className={`flex flex-col items-center gap-1 cursor-pointer ${active === 'home' ? 'text-brand-orange' : 'text-on-surface-variant'}`}>
+                        <span className="material-symbols-outlined text-[26px]" style={{ fontVariationSettings: active === 'home' ? "'FILL' 1" : "" }}>home</span>
+                        <span className="text-[12px] font-bold">Home</span>
+                    </div>
+                    <div onClick={() => navigate('/bookings')} className={`flex flex-col items-center gap-1 cursor-pointer ${active === 'bookings' ? 'text-brand-orange' : 'text-on-surface-variant'}`}>
+                        <span className="material-symbols-outlined text-[26px]" style={{ fontVariationSettings: active === 'bookings' ? "'FILL' 1" : "" }}>calendar_month</span>
+                        <span className="text-[12px] font-bold">Bookings</span>
+                    </div>
+                    <div onClick={() => navigate('/profile')} className={`flex flex-col items-center gap-1 cursor-pointer ${active === 'profile' ? 'text-brand-orange' : 'text-on-surface-variant'}`}>
+                        <span className="material-symbols-outlined text-[26px]" style={{ fontVariationSettings: active === 'profile' ? "'FILL' 1" : "" }}>account_circle</span>
+                        <span className="text-[12px] font-bold">Profile</span>
+                    </div>
+                </nav>
+            );
+        };
+
+        const TopBar = ({ title, showBack = true, onBack }) => {
+            const navigate = useNavigate();
+            return (
+                <header className="h-[64px] w-full flex items-center justify-between px-6 bg-white/80 backdrop-blur-md sticky top-0 z-40 border-b border-black/5">
+                    <div className="flex items-center gap-4">
+                        {showBack && (
+                            <div onClick={onBack || (() => navigate(-1))} className="w-10 h-10 rounded-full flex items-center justify-center cursor-pointer bg-white border border-outline-variant hover:bg-surface-container-low">
+                                <span className="material-symbols-outlined text-[20px]">arrow_back</span>
+                            </div>
+                        )}
+                        <h1 className="font-bold text-[18px] text-primary truncate max-w-[180px]">{title}</h1>
+                    </div>
+                    <div className="flex flex-col items-end">
+                        <div className="flex items-center gap-1">
+                            <span className="material-symbols-outlined text-[16px] text-brand-orange">location_on</span>
+                            <span className="text-[10px] font-bold text-on-surface-variant uppercase tracking-tighter">Pamuru</span>
+                        </div>
+                    </div>
+                </header>
+            );
+        };
+
+        // Screen Components
+        const HomeScreen = () => {
+            const navigate = useNavigate();
+            const services = [
+                { id: 'haircut', name: 'Haircut', icon: 'content_cut', img: 'https://lh3.googleusercontent.com/aida-public/AB6AXuBKVD3wYmvwBrljpMWutgcyagctD22XVzHUxyH6CN7wBthoVzYNAjasT48-aH9gZ5PQtxqPHJ0ezU8VhZy3g1rFKhShYWEuN1BfQUxQHlLHH6wu9CdedvMWssoqHy60RzWMkwYDUbEytRLhSRju3F8RjbipgxKfBlvnuB5PDGUT5fPq-tp3webOjcK1sAFFkgKs2ey80GB4aTTBnLqabtpuNzIY10dulBMg9EqoNInoAH1pWNbTstBx24tL0g416HsQA5VviRcv5nWG' },
+                { id: 'beard', name: 'Beard', icon: 'face_6', img: 'https://lh3.googleusercontent.com/aida-public/AB6AXuBZcHGVAN_JupiH8tEWszu_qtv6YD8_4nM0vQSvrHQcj-Lay1zOEt28EH5xGOH0b30pbMPuZauiJyWwINhH071df9zAEIp1IXd4xB3TtAQXeewS9viL4qT-VtS6Go48g_YQ6393xpeco9iOREXT1IkWfMvyJS-u0kAknNlVPYeqLRW3yHngBLsFtXU48coDalSktlXHOuZuEtwzQoTvpXdBXAwd6iwMNSbNV-j2jEuHzfIoIVHixS2MlMqSQYp4_uk-O9XfWpxiKem8' },
+                { id: 'facial', name: 'Facial', icon: 'spa', img: 'https://lh3.googleusercontent.com/aida-public/AB6AXuAlCYfAJE3vk3G0_KoHZZ6ovmWCuZFcLWmmUwzzBiTiIlTtIn2431t8QE9D8fF3X4vr7eqoMw9MIvrz9Wae4Sysvxq5jV1DAPyeCPtNKu8JvNdvqcwj6neYf5bSl46se4fYzlAACFPlQhSD_BCxtMVlWTkwE3_BK8p3ozkF4o9K9xm5PiCoTwt2dmQR5zuNlg7hmpM8s1vYcVUPk5IfB3kqjabQ9LI3iCh6cKz-OmUjlLtw0SaSloMxyJg8Pqz68om-QZfi4aSyqIlP' },
+                { id: 'hairspa', name: 'Hair Spa', icon: 'water_drop', img: 'https://lh3.googleusercontent.com/aida-public/AB6AXuB4hb17VbTJmk4mDeyiZA8LU6EQjsMQx_Xkny8HY3HEVIsuTkCwAByrCwX_nLO5U5X7cjuxxgQUaUnkD2jgS7ji20nuS_1HtNxWrpNB0PUkYB1Bf7ePOtMCv3JLgzMHfBH7_60B0BVHiPhu7gOeuM1j7Dt_OVZti1z-Et2TPmQxA_uQI4UVkqJn5-OCo5YAS5XLWzj9mqH4gWxbVROqeckTfNChwDCbej-kFEecbhdxaPL8p1Vy8fRER6w-Q4C_ZsF1mpAvWIdS09YX' },
+                { id: 'massage', name: 'Massage', icon: 'self_care' },
+                { id: 'shave', name: 'Shave', icon: 'radar' }
+            ];
+
+            return (
+                <div className="mobile-container">
+                    <TopBar title="Bhai Looks Salon" showBack={false} />
+                    <div className="content-scroll">
+                        <section className="px-6 mb-8 mt-4">
+                            <div className="relative w-full h-[240px] overflow-hidden rounded-2xl bg-surface-container-highest flex items-center">
+                                <div className="absolute inset-0 bg-gradient-to-r from-black/60 to-transparent z-10"></div>
+                                <img className="absolute inset-0 w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAdeNEQRpUUVjJcsfGKWRwCcMYyCVAqZt4Yn0tX7XPdIx-jRs8f2H_wplVJwf1MyQ805h4Q08PB5gpkCCfeXJvHkSgl_9jLrxF_7eOS5aJsZ15hJehPt-NPa6L6CMWOx4Dg-gSZ04MNfhjs4Pj95C4DCqMor0UuMBWuv0pxjBHOdoLu-NuVFdAHqCJ-I_tpRczLBlMTmArB6jyDQ3bG9rj7moXKvvZN-J2GO6Wmy960HCTBcuUsKzfDhMlbfH3p3v1JBlRyDGauIz71" />
+                                <div className="relative z-20 px-6">
+                                    <h2 className="text-[28px] text-white font-bold leading-tight mb-4">Ready for your next style?</h2>
+                                    <button onClick={() => navigate('/select-services')} className="bg-brand-orange text-white px-8 py-3 rounded-xl font-bold shadow-lg">Book Appointment</button>
+                                </div>
+                            </div>
+                        </section>
+
+                        <section className="px-6 grid grid-cols-3 gap-4 mb-8 text-center py-4 border-y border-outline-variant/30 bg-white">
+                            <div className="flex flex-col items-center gap-1">
+                                <span className="material-symbols-outlined text-brand-orange">verified_user</span>
+                                <span className="text-[10px] font-bold uppercase">Top Rated</span>
+                            </div>
+                            <div className="flex flex-col items-center gap-1">
+                                <span className="material-symbols-outlined text-brand-orange">clean_hands</span>
+                                <span className="text-[10px] font-bold uppercase">Safe & Clean</span>
+                            </div>
+                            <div className="flex flex-col items-center gap-1">
+                                <span className="material-symbols-outlined text-brand-orange">workspace_premium</span>
+                                <span className="text-[10px] font-bold uppercase">Expert Staff</span>
+                            </div>
+                        </section>
+
+                        <section className="px-6">
+                            <div className="flex justify-between items-center mb-6">
+                                <h3 className="text-xl font-bold">Our Services</h3>
+                                <button onClick={() => navigate('/select-services')} className="text-brand-orange font-bold text-xs uppercase tracking-wider">View All</button>
+                            </div>
+                            <div className="grid grid-cols-2 gap-4">
+                                {services.map(s => (
+                                    <div key={s.id} onClick={() => navigate('/select-services')} className="bg-white p-4 rounded-2xl border border-outline-variant/30 flex flex-col items-center text-center cursor-pointer shadow-sm hover:shadow-md transition-shadow">
+                                        <div className="w-12 h-12 bg-surface-container rounded-xl flex items-center justify-center mb-2">
+                                            <span className="material-symbols-outlined text-primary">{s.icon}</span>
+                                        </div>
+                                        <p className="font-bold text-sm">{s.name}</p>
+                                    </div>
+                                ))}
+                            </div>
+                        </section>
+                    </div>
+                    <BottomNav active="home" />
+                </div>
+            );
+        };
+
+        const SelectServicesScreen = () => {
+            const navigate = useNavigate();
+            const [selected, setSelected] = useState([]);
+            const services = [
+                { id: 1, name: 'Haircut', price: 299, time: '30 min', desc: 'Professional classic or trendy haircut for any style.', img: 'https://lh3.googleusercontent.com/aida-public/AB6AXuDTN48UeDxA20JE4qFodPzFPzK5DrZhwvIFMx8LXsrSIyplZ_cV2LQs2UKDWG0xfQLrqVpf4pnsQYYCl1PkOgwfo8ckB2uOCdaH_qFonlVILseJsJncfa1ShmOaPng7QMPKCc-oQrgMRmN11fD2COXaCINRARt0iYJ0YQoCLYHC8HF8Mn-oY8XY-2YLXBZQKSbcYIcVHJrpIkrxItZ6y10MUEClZ023oyNGZMHwL8qXITQIxKOMKn1eIpTE76KAT-g3fL9tatHouY0W' },
+                { id: 2, name: 'Beard Styling', price: 199, time: '20 min', desc: 'Trim and style your beard to perfection with hot towel.', img: 'https://lh3.googleusercontent.com/aida-public/AB6AXuBZcHGVAN_JupiH8tEWszu_qtv6YD8_4nM0vQSvrHQcj-Lay1zOEt28EH5xGOH0b30pbMPuZauiJyWwINhH071df9zAEIp1IXd4xB3TtAQXeewS9viL4qT-VtS6Go48g_YQ6393xpeco9iOREXT1IkWfMvyJS-u0kAknNlVPYeqLRW3yHngBLsFtXU48coDalSktlXHOuZuEtwzQoTvpXdBXAwd6iwMNSbNV-j2jEuHzfIoIVHixS2MlMqSQYp4_uk-O9XfWpxiKem8' },
+                { id: 3, name: 'Facial', price: 599, time: '45 min', desc: 'Refreshing skin treatment and face massage.', img: 'https://lh3.googleusercontent.com/aida-public/AB6AXuAlCYfAJE3vk3G0_KoHZZ6ovmWCuZFcLWmmUwzzBiTiIlTtIn2431t8QE9D8fF3X4vr7eqoMw9MIvrz9Wae4Sysvxq5jV1DAPyeCPtNKu8JvNdvqcwj6neYf5bSl46se4fYzlAACFPlQhSD_BCxtMVlWTkwE3_BK8p3ozkF4o9K9xm5PiCoTwt2dmQR5zuNlg7hmpM8s1vYcVUPk5IfB3kqjabQ9LI3iCh6cKz-OmUjlLtw0SaSloMxyJg8Pqz68om-QZfi4aSyqIlP' },
+                { id: 4, name: 'Hair Spa', price: 899, time: '40 min', desc: 'Deep conditioning and head massage for hair health.', img: 'https://lh3.googleusercontent.com/aida-public/AB6AXuB4hb17VbTJmk4mDeyiZA8LU6EQjsMQx_Xkny8HY3HEVIsuTkCwAByrCwX_nLO5U5X7cjuxxgQUaUnkD2jgS7ji20nuS_1HtNxWrpNB0PUkYB1Bf7ePOtMCv3JLgzMHfBH7_60B0BVHiPhu7gOeuM1j7Dt_OVZti1z-Et2TPmQxA_uQI4UVkqJn5-OCo5YAS5XLWzj9mqH4gWxbVROqeckTfNChwDCbej-kFEecbhdxaPL8p1Vy8fRER6w-Q4C_ZsF1mpAvWIdS09YX' }
+            ];
+
+            const toggleService = (id) => {
+                if (selected.includes(id)) setSelected(selected.filter(i => i !== id));
+                else setSelected([...selected, id]);
+            };
+
+            return (
+                <div className="mobile-container">
+                    <TopBar title="Choose Service" />
+                    <div className="content-scroll px-6">
+                        <section className="mb-8 mt-6">
+                            <h2 className="text-[28px] font-bold text-primary leading-tight">Select Services</h2>
+                            <p className="text-on-surface-variant">Choose the grooming services you'd like to book today.</p>
+                        </section>
+                        <div className="flex flex-col gap-4">
+                            {services.map(s => (
+                                <div key={s.id} onClick={() => toggleService(s.id)} className={`bg-white p-5 rounded-brand border transition-all ${selected.includes(s.id) ? 'border-brand-orange ring-1 ring-brand-orange shadow-md' : 'border-transparent shadow-sm'}`}>
+                                    <div className="flex gap-4">
+                                        <div className="w-16 h-16 rounded-xl bg-surface-container-high overflow-hidden shrink-0">
+                                            <img src={s.img} className="w-full h-full object-cover" />
+                                        </div>
+                                        <div className="flex-1">
+                                            <div className="flex justify-between items-start">
+                                                <h3 className="font-bold">{s.name}</h3>
+                                                <div className={`w-6 h-6 rounded-md border-2 transition-colors flex items-center justify-center ${selected.includes(s.id) ? 'bg-brand-orange border-brand-orange' : 'border-outline-variant'}`}>
+                                                    {selected.includes(s.id) && <span className="material-symbols-outlined text-white text-[18px]">check</span>}
+                                                </div>
+                                            </div>
+                                            <p className="text-xs text-on-surface-variant mt-1">{s.desc}</p>
+                                            <div className="flex items-center gap-3 mt-3">
+                                                <span className="px-2 py-0.5 bg-surface-container-low rounded-md text-[10px] font-bold uppercase text-on-surface-variant">{s.time}</span>
+                                                <span className="font-bold text-brand-orange">₹{s.price}</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            ))}
+                        </div>
+                    </div>
+                    <div className="absolute bottom-[84px] w-full bg-white/90 backdrop-blur-md p-6 border-t border-outline-variant">
+                        <p className="text-center text-xs font-bold text-on-surface-variant mb-4">
+                            {selected.length > 0 ? `${selected.length} service${selected.length > 1 ? 's' : ''} selected` : 'Select at least one service to continue'}
+                        </p>
+                        <button 
+                            disabled={selected.length === 0}
+                            onClick={() => navigate('/select-barber')}
+                            className={`w-full h-14 rounded-full font-bold text-sm transition-all ${selected.length > 0 ? 'bg-brand-orange text-white shadow-lg shadow-brand-orange/20' : 'bg-surface-container-high text-on-surface-variant'}`}>
+                            Continue
+                        </button>
+                    </div>
+                    <BottomNav active="home" />
+                </div>
+            );
+        };
+
+        const SelectBarberScreen = () => {
+            const navigate = useNavigate();
+            const [selected, setSelected] = useState(null);
+            const barbers = [
+                { id: 1, name: 'Samir Bhai', specialty: 'Fade Specialist', rating: 4.9, exp: '4 Years', img: 'https://lh3.googleusercontent.com/aida-public/AB6AXuAwjcZTBlKJsPybl-S4wxVfIA2hXLDLp1e53P_8-o9_I0uysN9h8i331cVJpB3CBaxPjHR-sn_dR9PjcrUcgi1JkzHuSJEe4VIRAl0EBgy_NKpngiV6AFqKnRmkYn11f38eH6a9ADrfygWwFODd5P-kfbfMhsmlKmmUDgcIYmMIKNPIz6KydzbE-JLu99dPqkcZY3CcBqfqNVLvm4qbWagsOrcLWzC2Z83lqyNBUstcZ-C7NzmkdlDGhd2G6-7TB6AK0lfxIJdss17C', recommended: true },
+                { id: 2, name: 'Arjun', specialty: 'Beard Specialist', rating: 4.8, exp: '3 Years', img: 'https://lh3.googleusercontent.com/aida-public/AB6AXuA0eEDuldYSSMP4MxDRNjkXogf9lShPKaO5xcECedh_mrcHj5WF_diZr-rhRcPNsSwl6e7DEpgx7xE3ucnIEIHC-t5wnbMg5GH26NER-qM536X5GPg_rbU2aThlLTPHCLDTK79Qw7Hb_ZCpx2loCHDI6d-p3x7nq6Ie0jOR1Q0_ZGhDnvhpAVwsdaIz0DU35enR43yvMAuds5Cc7Bd2e9RUuUB_ayf6zgJBmGjWo6MQNGReAMIFA50Vxaxx2XEetITQERA3yheV8iXT' },
+                { id: 3, name: 'Rohit', specialty: 'Haircut Specialist', rating: 4.7, exp: '2 Years', img: 'https://lh3.googleusercontent.com/aida-public/AB6AXuDIBcCQU7edGL8rOL-jdCKPOZbBblVyKopzS7p04zMMoTJz6nLnJFjAXs4e_rtceBa8UBwbAGJ4cBrzTVfxKGawop1Q1_0ygsUG210VtI8Gk1ubg8T64VmP18p2N9_NmLi3gS1BhUI15bUSp05yS2LrDBpqtqcj5MoP6KlEBv754bAsBLGAqWKkBimkBo2OZy2PuoWqF03fc5-usbrd5eIK7hjUKEJRJ_-TI67N-bQ2NUvw-hK_aKqhzqQF608HhwMWEF6bDLVQpb-X' }
+            ];
+
+            return (
+                <div className="mobile-container">
+                    <TopBar title="Select Barber" />
+                    <div className="content-scroll px-6">
+                        <section className="mt-6 mb-8">
+                            <h2 className="text-[28px] font-bold leading-tight">Choose Barber</h2>
+                            <p className="text-on-surface-variant">Pick an expert for your style.</p>
+                        </section>
+
+                        <div className="space-y-4">
+                            {barbers.map(b => (
+                                <div key={b.id} onClick={() => setSelected(b.id)} className={`relative bg-white p-6 rounded-2xl border transition-all ${selected === b.id ? 'border-brand-orange shadow-lg' : 'border-transparent shadow-sm'}`}>
+                                    {b.recommended && <span className="absolute -top-3 left-6 bg-brand-orange text-white text-[10px] font-bold px-3 py-1 rounded-full uppercase">Most Booked</span>}
+                                    <div className="flex gap-4">
+                                        <div className="w-16 h-16 rounded-full overflow-hidden shrink-0 border-2 border-white shadow-sm">
+                                            <img src={b.img} className="w-full h-full object-cover" />
+                                        </div>
+                                        <div className="flex-1">
+                                            <div className="flex justify-between items-start">
+                                                <h3 className="font-bold">{b.name}</h3>
+                                                <div className="flex items-center gap-1 bg-surface-container px-2 py-0.5 rounded-full">
+                                                    <span className="material-symbols-outlined text-brand-orange text-xs" style={{ fontVariationSettings: "'FILL' 1" }}>star</span>
+                                                    <span className="text-xs font-bold">{b.rating}</span>
+                                                </div>
+                                            </div>
+                                            <p className="text-xs text-on-surface-variant">{b.specialty}</p>
+                                            <div className="mt-2 flex items-center gap-2">
+                                                <div className="w-2 h-2 rounded-full bg-green-500"></div>
+                                                <span className="text-[10px] font-bold text-green-600 uppercase">Available Today</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div className={`absolute right-6 bottom-6 w-5 h-5 rounded-full border-2 flex items-center justify-center ${selected === b.id ? 'border-brand-orange' : 'border-outline-variant'}`}>
+                                        {selected === b.id && <div className="w-2.5 h-2.5 rounded-full bg-brand-orange"></div>}
+                                    </div>
+                                </div>
+                            ))}
+                            <div onClick={() => setSelected('any')} className={`bg-white/40 p-4 rounded-2xl border border-dashed flex items-center justify-between transition-all ${selected === 'any' ? 'border-brand-orange bg-white' : 'border-outline-variant'}`}>
+                                <div className="flex items-center gap-4">
+                                    <div className="w-12 h-12 bg-white rounded-full flex items-center justify-center shadow-sm border">
+                                        <span className="material-symbols-outlined">person_search</span>
+                                    </div>
+                                    <div>
+                                        <p className="font-bold text-sm">Any Available Barber</p>
+                                        <p className="text-[10px] text-on-surface-variant uppercase">Fastest Slot</p>
+                                    </div>
+                                </div>
+                                <div className={`w-5 h-5 rounded-full border-2 flex items-center justify-center ${selected === 'any' ? 'border-brand-orange' : 'border-outline-variant'}`}>
+                                    {selected === 'any' && <div className="w-2.5 h-2.5 rounded-full bg-brand-orange"></div>}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div className="absolute bottom-[84px] w-full bg-white/90 backdrop-blur-md p-6 border-t border-outline-variant">
+                        <button 
+                            disabled={!selected}
+                            onClick={() => navigate('/select-time')}
+                            className={`w-full h-14 rounded-full font-bold text-sm transition-all ${selected ? 'bg-brand-orange text-white shadow-lg shadow-brand-orange/20' : 'bg-surface-container-high text-on-surface-variant'}`}>
+                            Continue
+                        </button>
+                    </div>
+                    <BottomNav active="home" />
+                </div>
+            );
+        };
+
+        const SelectTimeScreen = () => {
+            const navigate = useNavigate();
+            const [selectedDate, setSelectedDate] = useState(14);
+            const [selectedTime, setSelectedTime] = useState(null);
+            const [showConflict, setShowConflict] = useState(false);
+
+            const dates = [
+                { day: 'MON', date: 12 },
+                { day: 'TUE', date: 13 },
+                { day: 'WED', date: 14 },
+                { day: 'THU', date: 15 },
+                { day: 'FRI', date: 16 }
+            ];
+
+            const handleTimeSelect = (time) => {
+                if (time === '4:00') setShowConflict(true);
+                else {
+                    setSelectedTime(time);
+                    setShowConflict(false);
+                }
+            };
+
+            return (
+                <div className="mobile-container">
+                    <TopBar title="Pick Time Slot" />
+                    <div className="content-scroll px-6">
+                        <section className="mt-6 mb-8">
+                            <h2 className="text-[28px] font-bold leading-tight">Pick a Slot</h2>
+                            <p className="text-on-surface-variant">Select a time that works for you.</p>
+                        </section>
+
+                        <div className="flex gap-3 overflow-x-auto no-scrollbar mb-8">
+                            {dates.map(d => (
+                                <div key={d.date} onClick={() => setSelectedDate(d.date)} className={`flex flex-col items-center justify-center min-w-[64px] h-[88px] rounded-2xl border transition-all ${selectedDate === d.date ? 'bg-brand-orange border-brand-orange text-white shadow-lg shadow-brand-orange/20' : 'bg-white border-outline-variant text-on-surface-variant'}`}>
+                                    <span className="text-[10px] font-bold">{d.day}</span>
+                                    <span className="text-xl font-extrabold">{d.date}</span>
+                                </div>
+                            ))}
+                        </div>
+
+                        <div className="space-y-8">
+                            <div>
+                                <h3 className="text-[10px] font-bold uppercase tracking-widest text-on-surface-variant mb-4">Morning</h3>
+                                <div className="grid grid-cols-3 gap-3">
+                                    {['9:00', '9:30', '10:00'].map(t => (
+                                        <button key={t} onClick={() => handleTimeSelect(t)} className={`py-3.5 rounded-xl border font-bold text-sm transition-all ${selectedTime === t ? 'bg-primary text-white border-primary shadow-md' : 'bg-white border-outline-variant/30 text-primary'}`}>{t}</button>
+                                    ))}
+                                </div>
+                            </div>
+                            <div>
+                                <h3 className="text-[10px] font-bold uppercase tracking-widest text-on-surface-variant mb-4">Afternoon</h3>
+                                <div className="grid grid-cols-3 gap-3">
+                                    {['2:00', '2:30', '4:00'].map(t => (
+                                        <button key={t} onClick={() => handleTimeSelect(t)} className={`py-3.5 rounded-xl border font-bold text-sm transition-all ${selectedTime === t ? 'bg-primary text-white border-primary shadow-md' : 'bg-white border-outline-variant/30 text-primary'}`}>{t}</button>
+                                    ))}
+                                </div>
+                            </div>
+                        </div>
+
+                        {showConflict && (
+                            <div className="mt-8 border-2 border-primary bg-white p-6 rounded-2xl animate-in fade-in slide-in-from-top-4 duration-500 shadow-xl">
+                                <div className="flex items-center gap-3 mb-4">
+                                    <span className="material-symbols-outlined text-red-500">error</span>
+                                    <p className="text-sm font-bold">Samir Bhai is unavailable at 4:00 PM</p>
+                                </div>
+                                <div className="space-y-4">
+                                    <div className="p-4 bg-surface rounded-xl border">
+                                        <p className="text-[11px] font-bold uppercase mb-2">Option 1</p>
+                                        <p className="text-sm font-bold mb-3">Arjun Available at 4:00 PM</p>
+                                        <button onClick={() => navigate('/review')} className="w-full py-3 bg-white border border-primary font-bold rounded-xl text-sm">Choose Arjun</button>
+                                    </div>
+                                    <div className="p-4 bg-surface rounded-xl border">
+                                        <p className="text-[11px] font-bold uppercase mb-2">Option 2</p>
+                                        <p className="text-sm font-bold mb-3">Samir Bhai at 5:00 PM</p>
+                                        <button onClick={() => navigate('/review')} className="w-full py-3 bg-white border border-primary font-bold rounded-xl text-sm">Choose 5:00 PM</button>
+                                    </div>
+                                </div>
+                            </div>
+                        )}
+                    </div>
+                    <div className="absolute bottom-[84px] w-full bg-white/90 backdrop-blur-md p-6 border-t border-outline-variant">
+                        <button 
+                            disabled={!selectedTime}
+                            onClick={() => navigate('/phone-entry')}
+                            className={`w-full h-14 rounded-full font-bold text-sm transition-all ${selectedTime ? 'bg-brand-orange text-white shadow-lg shadow-brand-orange/20' : 'bg-surface-container-high text-on-surface-variant'}`}>
+                            Continue
+                        </button>
+                    </div>
+                    <BottomNav active="home" />
+                </div>
+            );
+        };
+
+        const PhoneEntryScreen = () => {
+            const navigate = useNavigate();
+            const [phone, setPhone] = useState('');
+            return (
+                <div className="mobile-container">
+                    <TopBar title="Verification" />
+                    <div className="content-scroll px-6">
+                        <section className="mt-6 mb-8">
+                            <span className="text-[11px] font-bold uppercase text-brand-orange tracking-wider">Step 4 of 5</span>
+                            <h2 className="text-[28px] font-bold leading-tight mt-1">Almost Done</h2>
+                            <p className="text-on-surface-variant mt-2 text-lg">Enter your mobile number to receive booking confirmation.</p>
+                        </section>
+
+                        <div className="space-y-6">
+                            <div>
+                                <label className="block text-xs font-bold mb-2 uppercase tracking-widest text-on-surface-variant">Mobile Number</label>
+                                <div className="flex h-14 bg-white border border-outline-variant rounded-xl overflow-hidden focus-within:ring-2 focus-within:ring-brand-orange focus-within:border-brand-orange transition-all">
+                                    <span className="flex items-center px-4 font-bold border-r bg-surface">+91</span>
+                                    <input 
+                                        type="tel" 
+                                        value={phone}
+                                        onChange={(e) => setPhone(e.target.value.replace(/[^0-9]/g, ''))}
+                                        maxLength="10"
+                                        placeholder="00000 00000" 
+                                        className="flex-1 px-4 border-none focus:ring-0 font-bold" />
+                                </div>
+                            </div>
+                            <div className="flex gap-3 p-4 bg-white/50 border rounded-xl border-dashed">
+                                <span className="material-symbols-outlined text-brand-orange">shield_with_heart</span>
+                                <p className="text-xs font-medium">We'll only use your number for appointment updates and secure login.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div className="absolute bottom-[84px] w-full bg-white/90 backdrop-blur-md p-6 border-t border-outline-variant">
+                        <button 
+                            disabled={phone.length !== 10}
+                            onClick={() => navigate('/otp-verify')}
+                            className={`w-full h-14 rounded-full font-bold text-sm transition-all ${phone.length === 10 ? 'bg-brand-orange text-white shadow-lg shadow-brand-orange/20' : 'bg-surface-container-high text-on-surface-variant'}`}>
+                            Send OTP
+                        </button>
+                    </div>
+                    <BottomNav active="home" />
+                </div>
+            );
+        };
+
+        const OTPVerifyScreen = () => {
+            const navigate = useNavigate();
+            const [otp, setOtp] = useState(['', '', '', '']);
+            const handleChange = (val, idx) => {
+                const newOtp = [...otp];
+                newOtp[idx] = val.slice(-1);
+                setOtp(newOtp);
+                if (val && idx < 3) document.getElementById(`otp-${idx+1}`).focus();
+            };
+            const isFilled = otp.every(v => v !== '');
+
+            return (
+                <div className="mobile-container">
+                    <TopBar title="Verify OTP" />
+                    <div className="content-scroll px-6">
+                        <section className="mt-6 mb-8 text-center">
+                            <h2 className="text-[28px] font-bold leading-tight">Enter Code</h2>
+                            <p className="text-on-surface-variant mt-2">Code sent to +91 9XXXX XXX99</p>
+                        </section>
+
+                        <div className="flex justify-center gap-4 mb-8">
+                            {otp.map((v, i) => (
+                                <input key={i} id={`otp-${i}`} type="tel" value={v} onChange={(e) => handleChange(e.target.value, i)} className="w-14 h-14 text-center text-xl font-bold border border-outline-variant rounded-xl bg-white focus:ring-2 focus:ring-brand-orange focus:border-brand-orange" />
+                            ))}
+                        </div>
+
+                        <div className="flex justify-center mb-10">
+                            <div className="bg-white px-4 py-2 rounded-full border flex items-center gap-2">
+                                <span className="material-symbols-outlined text-sm text-brand-orange">schedule</span>
+                                <span className="text-xs font-bold">01:59</span>
+                            </div>
+                        </div>
+
+                        <div className="space-y-3">
+                            <button className="w-full py-4 border rounded-xl font-bold text-sm bg-white/40 flex items-center justify-center gap-2">
+                                <span className="material-symbols-outlined text-sm">refresh</span> Resend Code
+                            </button>
+                            <button onClick={() => navigate('/phone-entry')} className="w-full py-4 border rounded-xl font-bold text-sm bg-white/40 flex items-center justify-center gap-2">
+                                <span className="material-symbols-outlined text-sm">edit</span> Change Number
+                            </button>
+                        </div>
+                    </div>
+                    <div className="absolute bottom-[84px] w-full bg-white/90 backdrop-blur-md p-6 border-t border-outline-variant">
+                        <button 
+                            disabled={!isFilled}
+                            onClick={() => navigate('/review')}
+                            className={`w-full h-14 rounded-full font-bold text-sm transition-all ${isFilled ? 'bg-brand-orange text-white shadow-lg shadow-brand-orange/20' : 'bg-surface-container-high text-on-surface-variant'}`}>
+                            Verify & Continue
+                        </button>
+                    </div>
+                    <BottomNav active="home" />
+                </div>
+            );
+        };
+
+        const ReviewScreen = () => {
+            const navigate = useNavigate();
+            const [loading, setLoading] = useState(false);
+            const handleConfirm = () => {
+                setLoading(true);
+                setTimeout(() => navigate('/success'), 1500);
+            };
+
+            return (
+                <div className="mobile-container">
+                    <TopBar title="Review Booking" />
+                    <div className="content-scroll px-6">
+                        <section className="mt-6 mb-8">
+                            <h2 className="text-[28px] font-bold leading-tight">Checkout</h2>
+                            <p className="text-on-surface-variant">Check your details before payment.</p>
+                        </section>
+
+                        <div className="space-y-4">
+                            <div className="bg-white p-5 rounded-2xl shadow-sm border border-black/5">
+                                <div className="flex justify-between items-center mb-4">
+                                    <h3 className="font-bold">Service</h3>
+                                    <button className="text-brand-orange font-bold text-[10px] uppercase">Edit</button>
+                                </div>
+                                <div className="flex items-center gap-4">
+                                    <div className="w-12 h-12 bg-surface rounded-xl flex items-center justify-center">
+                                        <span className="material-symbols-outlined text-brand-orange">content_cut</span>
+                                    </div>
+                                    <div>
+                                        <p className="font-bold text-sm">Haircut</p>
+                                        <p className="text-xs text-on-surface-variant">with Samir Bhai • 30 min</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div className="bg-white p-5 rounded-2xl shadow-sm border border-black/5 flex justify-between items-center">
+                                <div className="flex items-center gap-4">
+                                    <div className="w-12 h-12 bg-brand-orange/10 rounded-xl flex items-center justify-center">
+                                        <span className="material-symbols-outlined text-brand-orange text-sm">calendar_today</span>
+                                    </div>
+                                    <div>
+                                        <p className="font-bold text-sm">Thursday, Oct 24</p>
+                                        <p className="text-xs text-on-surface-variant">4:00 PM</p>
+                                    </div>
+                                </div>
+                                <button className="text-brand-orange font-bold text-[10px] uppercase">Edit</button>
+                            </div>
+
+                            <div className="bg-white p-5 rounded-2xl shadow-sm border border-black/5">
+                                <h3 className="font-bold text-sm mb-4 uppercase tracking-widest text-[10px] text-on-surface-variant">Price Summary</h3>
+                                <div className="space-y-3">
+                                    <div className="flex justify-between text-sm">
+                                        <span className="text-on-surface-variant">Haircut</span>
+                                        <span className="font-bold">₹299</span>
+                                    </div>
+                                    <div className="flex justify-between text-sm">
+                                        <span className="text-on-surface-variant">Tax</span>
+                                        <span className="font-bold">₹0</span>
+                                    </div>
+                                    <div className="pt-3 border-t border-dashed flex justify-between items-center">
+                                        <span className="font-bold">Total Amount</span>
+                                        <span className="text-xl font-extrabold text-brand-orange">₹299</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div className="p-4 bg-black/5 rounded-2xl flex gap-3">
+                                <span className="material-symbols-outlined text-brand-orange text-[20px]">info</span>
+                                <p className="text-[11px] leading-relaxed text-on-surface-variant">Please arrive 10 minutes early. Appointments may be reassigned after 15 mins delay.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div className="absolute bottom-[84px] w-full bg-white/90 backdrop-blur-md p-6 border-t border-outline-variant">
+                        <button 
+                            disabled={loading}
+                            onClick={handleConfirm}
+                            className="w-full h-14 bg-brand-orange text-white rounded-full font-bold text-sm shadow-lg shadow-brand-orange/20 flex items-center justify-center gap-3">
+                            {loading ? <span className="animate-spin material-symbols-outlined">sync</span> : 'Confirm Booking'}
+                        </button>
+                    </div>
+                    <BottomNav active="home" />
+                </div>
+            );
+        };
+
+        const SuccessScreen = () => {
+            const navigate = useNavigate();
+            return (
+                <div className="mobile-container">
+                    <TopBar title="Success" showBack={false} />
+                    <div className="content-scroll flex flex-col items-center px-6 pt-12">
+                        <div className="w-24 h-24 rounded-full bg-green-500 flex items-center justify-center mb-6 shadow-xl shadow-green-500/20">
+                            <span className="material-symbols-outlined text-[48px] text-white">check_circle</span>
+                        </div>
+                        <h2 className="text-[28px] font-bold text-primary mb-2">Booking Confirmed 🎉</h2>
+                        <p className="text-center text-on-surface-variant mb-10">We've sent the details to your phone. See you soon!</p>
+
+                        <div className="w-full bg-white rounded-3xl p-6 border border-outline-variant/30 space-y-4 mb-8">
+                            <div className="flex justify-between text-sm pb-4 border-b border-outline-variant/20">
+                                <span className="text-on-surface-variant font-bold uppercase tracking-widest text-[10px]">Service</span>
+                                <span className="font-bold">Haircut</span>
+                            </div>
+                            <div className="flex justify-between text-sm pb-4 border-b border-outline-variant/20">
+                                <span className="text-on-surface-variant font-bold uppercase tracking-widest text-[10px]">Barber</span>
+                                <span className="font-bold">Samir Bhai</span>
+                            </div>
+                            <div className="flex justify-between text-sm pb-4 border-b border-outline-variant/20">
+                                <span className="text-on-surface-variant font-bold uppercase tracking-widest text-[10px]">Date</span>
+                                <span className="font-bold">Thursday, Oct 24</span>
+                            </div>
+                            <div className="flex justify-between items-center pt-2">
+                                <span className="font-bold text-[10px] uppercase text-on-surface-variant">Paid</span>
+                                <span className="text-2xl font-extrabold text-brand-orange">₹299</span>
+                            </div>
+                        </div>
+
+                        <div className="w-full space-y-3">
+                            <button onClick={() => navigate('/')} className="w-full h-14 bg-brand-orange text-white rounded-xl font-bold shadow-lg">Back to Home</button>
+                            <button onClick={() => navigate('/bookings')} className="w-full h-14 border-2 border-outline-variant rounded-xl font-bold text-on-surface-variant">View Appointments</button>
+                        </div>
+                    </div>
+                    <BottomNav active="home" />
+                </div>
+            );
+        };
+
+        const BookingsScreen = () => {
+            const navigate = useNavigate();
+            const bookings = [
+                { id: 1, service: 'Haircut', barber: 'Samir Bhai', date: 'Thu, Oct 24 • 2:30 PM', status: 'Completed', img: 'https://lh3.googleusercontent.com/aida-public/AB6AXuAUO_2C4MsQVe28ReQ3avAo-lqk91lEc5jUEZ68-pUJ90TFYuWEIusY1n9gUmG8dago0fkUcEvuxMseb6ZBU8uQEHl702u9l-g-WFu-ITqCgd2OqvqBfmf23eSpsbAItV3mnS8Og1ijhsAUW03FQcZa1m2dScWX7GngrutCJ3os4o8LXsTtEMrG5HDXHlz9j8yL7vbjW9TqVGRJ1D0CTs_LyOINmYosEBFyNVk6sPtzmQ5vUDRW-fsALqQU1Y7DWrYRyysTLEVS3laz' },
+                { id: 2, service: 'Beard Trim', barber: 'Rahul Bhai', date: 'Mon, Sep 12 • 11:00 AM', status: 'Completed', img: 'https://lh3.googleusercontent.com/aida-public/AB6AXuBxFWHs73VRvP2GWhytiTfCXQnpqasQud-PLwfngjBU13JYcwvDj7QnL6rAa9PPVcbNOQlT9Mce6SazLvQGbx1H4_LOYFOkK_hbppB6EaEAECUlZ_xWs3HhozR2BwEb__jn7jiZQs4ns9CRe_14bj5LVEm7egcDGPnNhJ60F8h_LK7EcOWPQBQE2MiH-ROdz1X4Be85knvh9h_A7VYrR7d5tA3i7A-oxBJBUrpi-nXGi_-pZ4YWVcyiOJf2OlmsbwK-dcsOB9TIqDFh' }
+            ];
+
+            return (
+                <div className="mobile-container">
+                    <TopBar title="My Bookings" showBack={false} />
+                    <div className="content-scroll px-6">
+                        <section className="mt-6 mb-6">
+                            <h2 className="text-[28px] font-bold leading-tight">Appointments</h2>
+                            <p className="text-on-surface-variant">Manage your salon sessions.</p>
+                        </section>
+
+                        <div className="flex border-b border-outline-variant/30 mb-6">
+                            <button className="flex-1 pb-3 text-sm font-bold text-on-surface-variant">Upcoming</button>
+                            <button className="flex-1 pb-3 text-sm font-bold text-brand-orange border-b-2 border-brand-orange">Completed</button>
+                        </div>
+
+                        <div className="space-y-4">
+                            {bookings.map(b => (
+                                <div key={b.id} className="bg-white p-5 rounded-2xl shadow-sm border border-outline-variant/20 flex flex-col gap-5">
+                                    <div className="flex justify-between items-start">
+                                        <div className="flex gap-4">
+                                            <div className="w-12 h-12 rounded-full overflow-hidden shrink-0">
+                                                <img src={b.img} className="w-full h-full object-cover" />
+                                            </div>
+                                            <div>
+                                                <h3 className="font-bold text-sm">{b.service}</h3>
+                                                <p className="text-xs text-on-surface-variant">with {b.barber}</p>
+                                            </div>
+                                        </div>
+                                        <span className="px-3 py-1 bg-surface-container-high text-on-surface-variant font-bold text-[10px] rounded-full uppercase">{b.status}</span>
+                                    </div>
+                                    <div className="flex items-center gap-3 bg-surface p-3 rounded-xl text-xs font-bold text-on-surface-variant">
+                                        <span className="material-symbols-outlined text-[18px]">calendar_today</span>
+                                        {b.date}
+                                    </div>
+                                    <div className="flex gap-3">
+                                        <button className="flex-1 py-3 border border-outline-variant rounded-xl text-xs font-bold bg-white">Book Again</button>
+                                        <button className="px-6 py-3 border border-outline-variant rounded-xl text-xs font-bold bg-white">Review</button>
+                                    </div>
+                                </div>
+                            ))}
+                        </div>
+                    </div>
+                    <BottomNav active="bookings" />
+                </div>
+            );
+        };
+
+        const ProfileScreen = () => {
+            return (
+                <div className="mobile-container">
+                    <TopBar title="Profile" showBack={false} />
+                    <div className="content-scroll px-6">
+                        <section className="mt-8 mb-10 flex flex-col items-center">
+                            <div className="w-24 h-24 rounded-full border-4 border-white shadow-xl bg-surface-container-highest overflow-hidden mb-4">
+                                <span className="material-symbols-outlined text-[64px] flex items-center justify-center h-full text-on-surface-variant">person</span>
+                            </div>
+                            <h2 className="text-2xl font-bold">Sumit Sharma</h2>
+                            <p className="text-on-surface-variant">+91 98765 43210</p>
+                        </section>
+
+                        <div className="bg-white rounded-3xl overflow-hidden shadow-sm border border-black/5 mb-8">
+                            {[
+                                { icon: 'person', label: 'Edit Profile' },
+                                { icon: 'settings', label: 'Settings' },
+                                { icon: 'help', label: 'Help & Support' },
+                                { icon: 'logout', label: 'Logout', color: 'text-red-500' }
+                            ].map((item, i, arr) => (
+                                <div key={i} className={`flex items-center justify-between p-5 ${i !== arr.length - 1 ? 'border-b border-black/5' : ''}`}>
+                                    <div className="flex items-center gap-4">
+                                        <span className={`material-symbols-outlined ${item.color || 'text-on-surface-variant'}`}>{item.icon}</span>
+                                        <span className={`font-bold text-sm ${item.color || 'text-on-surface'}`}>{item.label}</span>
+                                    </div>
+                                    <span className="material-symbols-outlined text-on-surface-variant/30">chevron_right</span>
+                                </div>
+                            ))}
+                        </div>
+
+                        <div className="p-8 text-center bg-white/40 border border-dashed rounded-3xl">
+                            <span className="material-symbols-outlined text-brand-orange text-3xl mb-2">stars</span>
+                            <p className="text-xs font-bold text-on-surface-variant uppercase tracking-widest mb-1">Loyalty Points</p>
+                            <p className="text-2xl font-extrabold text-brand-orange">450 pts</p>
+                        </div>
+                    </div>
+                    <BottomNav active="profile" />
+                </div>
+            );
+        };
+
+        // App Wrapper
+        const App = () => {
+            return (
+                <MemoryRouter>
+                    <Routes>
+                        <Route path="/" element={<HomeScreen />} />
+                        <Route path="/select-services" element={<SelectServicesScreen />} />
+                        <Route path="/select-barber" element={<SelectBarberScreen />} />
+                        <Route path="/select-time" element={<SelectTimeScreen />} />
+                        <Route path="/phone-entry" element={<PhoneEntryScreen />} />
+                        <Route path="/otp-verify" element={<OTPVerifyScreen />} />
+                        <Route path="/review" element={<ReviewScreen />} />
+                        <Route path="/success" element={<SuccessScreen />} />
+                        <Route path="/bookings" element={<BookingsScreen />} />
+                        <Route path="/profile" element={<ProfileScreen />} />
+                    </Routes>
+                </MemoryRouter>
+            );
+        };
+
+        const root = createRoot(document.getElementById('root'));
+        root.render(<App />);
+    </script>
+</body>
+</html>
